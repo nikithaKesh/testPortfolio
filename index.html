@@ -54,8 +54,6 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    /* UX Fix: Prevents sections from hiding under sticky nav */
     html { scroll-behavior: smooth; scroll-padding-top: 120px; }
 
     /* =========================================
@@ -70,11 +68,7 @@
     }
 
     body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -2;
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -2;
       background: 
         radial-gradient(circle at 10% 20%, rgba(117, 146, 121, 0.08), transparent 40%),
         radial-gradient(circle at 90% 80%, rgba(212, 194, 165, 0.05), transparent 40%),
@@ -82,14 +76,9 @@
     }
 
     body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-      opacity: 0.03;
-      mix-blend-mode: overlay;
+      opacity: 0.03; mix-blend-mode: overlay;
     }
 
     ::selection { background: rgba(117, 146, 121, 0.3); color: var(--text); }
@@ -110,40 +99,22 @@
        TYPOGRAPHY SYSTEM
        ========================================= */
     .mono {
-      font-family: var(--font-mono);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-size: 0.75rem;
-      color: var(--primary-2);
-      font-weight: 300;
+      font-family: var(--font-mono); letter-spacing: 0.12em;
+      text-transform: uppercase; font-size: 0.75rem; color: var(--primary-2); font-weight: 300;
     }
 
     .section-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 18px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: var(--surface-3);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      margin-bottom: 24px;
+      display: inline-flex; align-items: center; gap: 12px; padding: 10px 18px;
+      border-radius: 999px; border: 1px solid var(--line); background: var(--surface-3);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); margin-bottom: 24px;
     }
-
     .section-tag i { color: var(--accent); font-size: 1.1rem; }
 
-    .title-xl, .title-lg, .title-md, .title-sm {
-      font-family: var(--font-display);
-      line-height: 1.1;
-      font-weight: 400;
-    }
-
+    .title-xl, .title-lg, .title-md, .title-sm { font-family: var(--font-display); line-height: 1.1; font-weight: 400; }
     .title-xl { font-size: clamp(3.2rem, 7vw, 6.5rem); letter-spacing: -0.02em; }
     .title-lg { font-size: clamp(2.4rem, 4vw, 4rem); letter-spacing: -0.01em; }
     .title-md { font-size: clamp(1.6rem, 2.2vw, 2.2rem); }
     .title-sm { font-size: 1.25rem; font-weight: 500; }
-    
     .italic-serif { font-style: italic; font-weight: 500; color: var(--primary-2); }
 
     .lead { font-size: clamp(1.05rem, 1.4vw, 1.15rem); line-height: 1.8; color: var(--muted); max-width: 68ch; font-weight: 300; }
@@ -158,154 +129,72 @@
     .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 
     .card {
-      position: relative;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-soft);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      overflow: hidden;
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-      height: 100%;
+      position: relative; background: var(--surface); border: 1px solid var(--line);
+      border-radius: var(--radius-lg); box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); overflow: hidden;
+      transition: var(--transition); display: flex; flex-direction: column; height: 100%;
     }
-
     .card::before {
-      content: ""; position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent 40%);
-      pointer-events: none;
+      content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent 40%); pointer-events: none;
     }
-
     .card-pad { padding: 32px; }
 
     /* =========================================
        COMPONENTS (BUTTONS & CHIPS)
        ========================================= */
     .btn {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      min-height: 54px;
-      padding: 0 28px;
-      border-radius: var(--radius-sm);
-      border: 1px solid transparent;
-      transition: var(--transition);
-      cursor: none;
-      white-space: nowrap;
-      font-weight: 500;
-      letter-spacing: 0.02em;
+      position: relative; display: inline-flex; align-items: center; justify-content: center;
+      gap: 12px; min-height: 54px; padding: 0 28px; border-radius: var(--radius-sm);
+      border: 1px solid transparent; transition: var(--transition); cursor: none;
+      white-space: nowrap; font-weight: 500; letter-spacing: 0.02em;
     }
-
     .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--primary); color: #000; font-weight: 600; box-shadow: 0 10px 30px rgba(117, 146, 121, 0.2); }
+    .btn-primary:hover { background: var(--primary-2); box-shadow: 0 15px 40px rgba(117, 146, 121, 0.3); }
+    .btn-secondary { background: transparent; border-color: var(--line-strong); color: var(--text); }
+    .btn-secondary:hover { border-color: var(--primary-2); background: rgba(117, 146, 121, 0.05); }
 
-    .btn-primary {
-      background: var(--primary);
-      color: #000;
-      font-weight: 600;
-      box-shadow: 0 10px 30px rgba(117, 146, 121, 0.2);
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-2);
-      box-shadow: 0 15px 40px rgba(117, 146, 121, 0.3);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      border-color: var(--line-strong);
-      color: var(--text);
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--primary-2);
-      background: rgba(117, 146, 121, 0.05);
-    }
-
-    .btn-ghost {
-      min-height: 44px; padding: 0 20px;
-      border: 1px solid transparent; color: var(--muted);
-      border-radius: var(--radius-sm);
-    }
-
-    .btn-ghost.active, .btn-ghost:hover {
-      color: var(--text);
-      border-color: var(--line-strong);
-      background: var(--surface-3);
-    }
+    .btn-ghost { min-height: 44px; padding: 0 20px; border: 1px solid transparent; color: var(--muted); border-radius: var(--radius-sm); }
+    .btn-ghost.active, .btn-ghost:hover { color: var(--text); border-color: var(--line-strong); background: var(--surface-3); }
 
     .chip-row { display: flex; flex-wrap: wrap; gap: 12px; }
-
     .chip {
-      display: inline-flex; align-items: center; gap: 8px;
-      min-height: 38px; padding: 0 16px;
-      border: 1px solid var(--line); border-radius: var(--radius-sm);
-      background: var(--surface-3); color: var(--muted);
-      font-size: 0.9rem; font-weight: 400;
+      display: inline-flex; align-items: center; gap: 8px; min-height: 38px; padding: 0 16px;
+      border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface-3);
+      color: var(--muted); font-size: 0.9rem; font-weight: 400; transition: var(--transition);
     }
-
+    a.chip:hover { color: var(--text); border-color: var(--primary-2); background: rgba(117, 146, 121, 0.05); transform: translateY(-2px);}
     .chip i { color: var(--primary-2); font-size: 1.1rem; }
 
     /* =========================================
        NAVIGATION
        ========================================= */
     .site-header { position: sticky; top: 0; z-index: 100; padding-top: 24px; }
-
     .nav-shell {
-      width: min(calc(var(--container) + 40px), calc(100% - 24px));
-      margin-inline: auto; height: var(--nav-h);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 24px; border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      background: rgba(14, 18, 15, 0.6);
-      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-      transition: var(--transition);
+      width: min(calc(var(--container) + 40px), calc(100% - 24px)); margin-inline: auto; height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between; padding: 0 24px;
+      border: 1px solid var(--line); border-radius: var(--radius-md); background: rgba(14, 18, 15, 0.6);
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); transition: var(--transition);
     }
-
-    .nav-shell.scrolled {
-      background: rgba(11, 14, 12, 0.85);
-      border-color: var(--line-strong);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    }
+    .nav-shell.scrolled { background: rgba(11, 14, 12, 0.85); border-color: var(--line-strong); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
 
     .brand { display: flex; align-items: center; gap: 16px; min-width: 0; }
-
     .brand-mark {
-      width: 44px; height: 44px; display: grid; place-items: center;
-      border-radius: var(--radius-sm);
-      background: var(--surface-3); border: 1px solid var(--line);
-      font-family: var(--font-display); font-weight: 600; font-style: italic; font-size: 1.1rem;
-      color: var(--accent);
+      width: 44px; height: 44px; display: grid; place-items: center; border-radius: var(--radius-sm);
+      background: var(--surface-3); border: 1px solid var(--line); font-family: var(--font-display);
+      font-weight: 600; font-style: italic; font-size: 1.1rem; color: var(--accent);
     }
-
     .brand-meta { display: grid; gap: 2px; }
     .brand-title { font-weight: 500; font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.02em; }
     .brand-sub { color: var(--muted-2); font-size: 0.82rem; font-weight: 300; }
 
     .nav-links { display: flex; align-items: center; gap: 6px; }
-
-    .nav-link {
-      min-height: 42px; padding: 0 18px; border-radius: var(--radius-sm);
-      color: var(--muted); transition: var(--transition);
-      font-size: 0.95rem; display: flex; align-items: center;
-    }
-
+    .nav-link { min-height: 42px; padding: 0 18px; border-radius: var(--radius-sm); color: var(--muted); transition: var(--transition); font-size: 0.95rem; display: flex; align-items: center; }
     .nav-link:hover, .nav-link.active { color: var(--text); background: var(--surface-3); }
-
     .nav-actions { display: flex; align-items: center; gap: 12px; }
 
-    .mobile-toggle {
-      display: none; width: 46px; height: 46px; border-radius: var(--radius-sm);
-      border: 1px solid var(--line); background: var(--surface-3); cursor: none;
-    }
-    .mobile-toggle span, .mobile-toggle::before, .mobile-toggle::after {
-      content: ""; display: block; width: 20px; height: 1.5px;
-      border-radius: 2px; margin-inline: auto; background: var(--text);
-      transition: var(--transition);
-    }
+    .mobile-toggle { display: none; width: 46px; height: 46px; border-radius: var(--radius-sm); border: 1px solid var(--line); background: var(--surface-3); cursor: none; }
+    .mobile-toggle span, .mobile-toggle::before, .mobile-toggle::after { content: ""; display: block; width: 20px; height: 1.5px; border-radius: 2px; margin-inline: auto; background: var(--text); transition: var(--transition); }
     .mobile-toggle::before { margin-bottom: 6px; }
     .mobile-toggle::after { margin-top: 6px; }
     .mobile-toggle.active span { opacity: 0; }
@@ -313,12 +202,9 @@
     .mobile-toggle.active::after { transform: translateY(-7.5px) rotate(-45deg); }
 
     .mobile-panel {
-      position: fixed; inset: calc(var(--nav-h) + 36px) 12px auto; z-index: 90;
-      padding: 24px; border-radius: var(--radius-md);
-      background: rgba(14, 18, 15, 0.95); border: 1px solid var(--line-strong);
-      backdrop-filter: blur(24px); box-shadow: var(--shadow);
-      transform: translateY(-16px); opacity: 0; visibility: hidden;
-      transition: var(--transition);
+      position: fixed; inset: calc(var(--nav-h) + 36px) 12px auto; z-index: 90; padding: 24px; border-radius: var(--radius-md);
+      background: rgba(14, 18, 15, 0.95); border: 1px solid var(--line-strong); backdrop-filter: blur(24px);
+      box-shadow: var(--shadow); transform: translateY(-16px); opacity: 0; visibility: hidden; transition: var(--transition);
     }
     .mobile-panel.open { opacity: 1; visibility: visible; transform: translateY(0); }
     .mobile-panel .nav-link { width: 100%; justify-content: flex-start; display: inline-flex; min-height: 48px; margin-bottom: 8px; }
@@ -329,11 +215,7 @@
     .page-shell { padding: 40px 0 60px; }
     .page { display: none; animation: pageIn 600ms cubic-bezier(0.25, 1, 0.35, 1); }
     .page.active { display: block; }
-    @keyframes pageIn {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
+    @keyframes pageIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
     .section { padding: 60px 0 80px; }
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity 800ms ease, transform 800ms ease; }
     .reveal.show { opacity: 1; transform: translateY(0); }
@@ -341,32 +223,17 @@
     /* =========================================
        HERO SECTION 
        ========================================= */
-    .hero {
-      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px;
-      align-items: center; min-height: calc(100vh - 160px);
-    }
-
+    .hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; min-height: calc(100vh - 160px); }
     .hero-copy { display: flex; flex-direction: column; gap: 24px; justify-content: center; }
-
     .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; }
 
-    .hero-visual {
-      position: relative; display: flex; align-items: center; justify-content: center;
-      height: 100%; min-height: 600px;
-    }
-
+    .hero-visual { position: relative; display: flex; align-items: center; justify-content: center; height: 100%; min-height: 600px; }
     .organic-frame {
-      position: relative; width: min(100%, 520px); height: 620px;
-      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      box-shadow: inset 0 0 80px rgba(255,255,255,0.02), var(--shadow-soft);
-      backdrop-filter: blur(30px);
-      display: flex; flex-direction: column; justify-content: center; padding: 40px;
-      animation: morph 15s ease-in-out infinite alternate;
-      overflow: hidden;
+      position: relative; width: min(100%, 520px); height: 620px; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+      background: var(--surface); border: 1px solid var(--line); box-shadow: inset 0 0 80px rgba(255,255,255,0.02), var(--shadow-soft);
+      backdrop-filter: blur(30px); display: flex; flex-direction: column; justify-content: center; padding: 40px;
+      animation: morph 15s ease-in-out infinite alternate; overflow: hidden;
     }
-
     @keyframes morph {
       0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
       50% { border-radius: 60% 40% 30% 70% / 50% 60% 40% 60%; }
@@ -374,32 +241,18 @@
     }
 
     .organic-blob {
-      position: absolute; width: 300px; height: 300px;
-      background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-      opacity: 0.15; filter: blur(40px);
-      animation: float 10s ease-in-out infinite;
+      position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+      opacity: 0.15; filter: blur(40px); animation: float 10s ease-in-out infinite;
     }
     .blob-1 { top: -50px; left: -50px; }
     .blob-2 { bottom: -50px; right: -50px; background: radial-gradient(circle, var(--accent) 0%, transparent 70%); animation-delay: -5s; }
-
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0); }
-      50% { transform: translate(30px, 40px); }
-    }
+    @keyframes float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(30px, 40px); } }
 
     .field-notes {
-      position: relative; z-index: 2;
-      background: rgba(14, 18, 15, 0.7);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      padding: 28px;
+      position: relative; z-index: 2; background: rgba(14, 18, 15, 0.7);
+      border: 1px solid var(--line); border-radius: var(--radius-md); padding: 28px;
     }
-
-    .field-notes-head {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 24px; border-bottom: 1px solid var(--line); padding-bottom: 16px;
-    }
-
+    .field-notes-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; border-bottom: 1px solid var(--line); padding-bottom: 16px; }
     .field-list { display: grid; gap: 16px; }
     .field-item { display: flex; flex-direction: column; gap: 4px; }
     .field-key { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted-2); text-transform: uppercase; letter-spacing: 1px;}
@@ -412,58 +265,42 @@
     .section-head .lead { max-width: 50ch; margin-bottom: 8px;}
 
     .icon-box {
-      width: 48px; height: 48px; min-width: 48px;
-      border-radius: 50%; 
-      display: grid; place-items: center;
-      background: var(--surface-3); border: 1px solid var(--line);
+      width: 48px; height: 48px; min-width: 48px; border-radius: 50%; 
+      display: grid; place-items: center; background: var(--surface-3); border: 1px solid var(--line);
       color: var(--primary-2); font-size: 1.4rem;
     }
 
     .stack-list, .principle-list { display: grid; gap: 16px; }
-    
     .stack-item {
-      padding: 24px; border-radius: var(--radius-md);
-      border: 1px solid var(--line); background: var(--surface);
-      display: flex; align-items: flex-start; gap: 20px;
-      transition: var(--transition);
-      height: 100%;
+      padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--line); background: var(--surface);
+      display: flex; align-items: flex-start; gap: 20px; transition: var(--transition); height: 100%;
     }
     .stack-item:hover { transform: translateX(6px); border-color: var(--primary); background: var(--surface-2); }
-
     .highlight-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 32px; }
 
     /* =========================================
        SKILLS (INTERACTIVE SPOTLIGHT)
        ========================================= */
     .spotlight-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: flex-start;}
-    
     .skill-groups { display: grid; gap: 24px; }
     .skill-group { padding: 28px; border-radius: var(--radius-md); border: 1px solid var(--line); background: var(--surface); }
     .skill-group-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
-    
     .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
     .skill-pill {
-      min-height: 40px; padding: 0 16px; border-radius: var(--radius-sm);
-      border: 1px solid var(--line); background: transparent; color: var(--muted);
-      transition: var(--transition); display: flex; align-items: center;
+      min-height: 40px; padding: 0 16px; border-radius: var(--radius-sm); border: 1px solid var(--line);
+      background: transparent; color: var(--muted); transition: var(--transition); display: flex; align-items: center;
     }
-    .skill-pill:hover, .skill-pill.active {
-      color: var(--bg); background: var(--primary-2); border-color: var(--primary-2); transform: translateY(-2px);
-    }
+    .skill-pill:hover, .skill-pill.active { color: var(--bg); background: var(--primary-2); border-color: var(--primary-2); transform: translateY(-2px); }
 
-    /* Fixed Sticky Wrapper for massive UX improvement */
     .skill-spotlight-wrapper { position: sticky; top: 120px; height: max-content; }
-
     .skill-spotlight {
       display: flex; flex-direction: column; justify-content: space-between; gap: 24px;
       padding: 36px; border-radius: var(--radius-md); border: 1px solid var(--line);
       background: linear-gradient(180deg, var(--surface), rgba(14, 18, 15, 0.4));
     }
     .skill-spotlight-head { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px; border-bottom: 1px solid var(--line); padding-bottom: 20px;}
-    
     .skill-meter { width: 100%; height: 4px; border-radius: 2px; background: var(--line-strong); overflow: hidden; margin-top: 24px; }
     .skill-meter span { display: block; height: 100%; width: 0; background: var(--primary); transition: width 800ms ease; }
-
     .bullet-list { display: grid; gap: 14px; margin-top: 20px; }
     .bullet-list li { display: flex; align-items: flex-start; gap: 12px; color: var(--muted); line-height: 1.6; font-weight: 300; }
     .bullet-list li i { color: var(--primary-2); font-size: 1.1rem; margin-top: 2px; }
@@ -473,73 +310,47 @@
        ========================================= */
     .project-toolbar { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 32px; }
     .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
-
     .project-card {
       padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--line);
-      background: var(--surface); transition: var(--transition);
-      display: flex; flex-direction: column; height: 100%; /* Flex alignment fix */
+      background: var(--surface); transition: var(--transition); display: flex; flex-direction: column; height: 100%;
     }
-    .project-card:hover {
-      transform: translateY(-8px); border-color: var(--primary); background: var(--surface-2);
-      box-shadow: var(--shadow);
-    }
-
+    .project-card:hover { transform: translateY(-8px); border-color: var(--primary); background: var(--surface-2); box-shadow: var(--shadow); }
     .project-visual {
-      position: relative; height: 260px; border-radius: var(--radius-sm);
-      border: 1px solid var(--line); overflow: hidden; margin-bottom: 24px;
-      background: var(--bg-soft);
-      display: flex; align-items: center; justify-content: center;
+      position: relative; height: 260px; border-radius: var(--radius-sm); border: 1px solid var(--line);
+      overflow: hidden; margin-bottom: 24px; background: var(--bg-soft); display: flex; align-items: center; justify-content: center;
     }
-    
     .project-visual i { font-size: 4rem; color: rgba(181, 201, 186, 0.2); }
-
     .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
-    .project-tag {
-      padding: 6px 12px; border-radius: 4px; border: 1px solid var(--line);
-      background: var(--surface-3); color: var(--muted); font-size: 0.8rem;
-    }
-
-    .project-links { margin-top: auto; padding-top: 24px; } /* Pushes to absolute bottom */
+    .project-tag { padding: 6px 12px; border-radius: 4px; border: 1px solid var(--line); background: var(--surface-3); color: var(--muted); font-size: 0.8rem; }
+    .project-links { margin-top: auto; padding-top: 24px; } 
     .text-link {
-      display: inline-flex; align-items: center; gap: 8px; color: var(--primary-2);
-      font-weight: 500; transition: gap var(--transition), color var(--transition); border-bottom: 1px solid transparent; padding-bottom: 2px;
+      display: inline-flex; align-items: center; gap: 8px; color: var(--primary-2); font-weight: 500;
+      transition: gap var(--transition), color var(--transition); border-bottom: 1px solid transparent; padding-bottom: 2px;
     }
     .text-link:hover { gap: 12px; color: var(--text); border-color: var(--text); }
 
     /* =========================================
-       EXPERIENCE TIMELINE (Aligned)
+       EXPERIENCE TIMELINE (Aligned & Responsive)
        ========================================= */
-    .timeline-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-    
-    .timeline-column { 
-      display: flex; flex-direction: column; gap: 32px; 
-      position: relative; padding-left: 28px;
-    }
+    .timeline-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .timeline-column { position: relative; padding-left: 28px; display: grid; gap: 32px; }
 
     /* The continuous line down the column */
     .timeline-column::before {
-      content: ""; position: absolute; left: 0; top: 12px; bottom: 0; width: 1px;
-      background: var(--line-strong);
+      content: ""; position: absolute; left: 0; top: 16px; bottom: 16px; width: 1px;
+      background: var(--line-strong); z-index: 1;
     }
 
-    .timeline-card {
-      position: relative; padding: 28px;
-      border-radius: var(--radius-md); border: 1px solid var(--line); background: var(--surface);
-    }
+    .timeline-card { position: relative; padding: 28px; border-radius: var(--radius-md); border: 1px solid var(--line); background: var(--surface); }
     
-    /* The dot perfectly aligned with the eyebrow */
+    /* The dot perfectly aligned */
     .timeline-card::before {
       content: ""; position: absolute; left: -32.5px; top: 32px; width: 10px; height: 10px;
-      border-radius: 50%; background: var(--primary); border: 2px solid var(--bg);
-      z-index: 2;
+      border-radius: 50%; background: var(--primary); border: 2px solid var(--bg); z-index: 2;
     }
 
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem;
-      color: var(--muted-2); margin-bottom: 12px; font-family: var(--font-mono); text-transform: uppercase;
-    }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--muted-2); margin-bottom: 12px; font-family: var(--font-mono); text-transform: uppercase; }
     .eyebrow .status { color: var(--accent); }
-    
     .timeline-list { margin-top: 16px; display: grid; gap: 12px; }
     .timeline-list li { display: flex; align-items: flex-start; gap: 12px; color: var(--muted); line-height: 1.6; font-weight: 300;}
     .timeline-list li i { color: var(--primary-2); font-size: 1.1rem; margin-top: 2px;}
@@ -548,19 +359,17 @@
        CONTACT FORM
        ========================================= */
     .contact-layout { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; align-items: flex-start;}
-    
     .contact-list { display: grid; gap: 16px; margin-top: 32px; }
     .contact-item {
       display: flex; align-items: center; justify-content: space-between; gap: 16px;
       padding: 20px; border-radius: var(--radius-sm); border: 1px solid var(--line); background: var(--surface);
     }
-    .contact-item i { font-size: 1.5rem; color: var(--primary-2); }
-
+    .contact-item i.main-icon { font-size: 1.5rem; color: var(--primary-2); }
+    
     .contact-form { display: grid; gap: 24px; }
     .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
     .field { position: relative; }
     .field label { display: block; margin-bottom: 10px; color: var(--muted); font-size: 0.9rem; }
-    
     .input, .textarea {
       width: 100%; border: 1px solid var(--line); background: rgba(0,0,0,0.2);
       color: var(--text); border-radius: var(--radius-sm); padding: 18px;
@@ -568,10 +377,7 @@
     }
     .input { min-height: 56px; }
     .textarea { min-height: 180px; resize: vertical; }
-    
-    .input:focus, .textarea:focus {
-      border-color: var(--primary); background: rgba(117, 146, 121, 0.05); outline: none; box-shadow: 0 0 0 2px rgba(117, 146, 121, 0.2);
-    }
+    .input:focus, .textarea:focus { border-color: var(--primary); background: rgba(117, 146, 121, 0.05); outline: none; box-shadow: 0 0 0 2px rgba(117, 146, 121, 0.2); }
 
     /* =========================================
        FOOTER & MODALS
@@ -594,40 +400,29 @@
     }
     .modal.show { opacity: 1; visibility: visible; transform: translate(-50%, -50%); }
     
-    .modal-card {
-      border-radius: var(--radius-lg); border: 1px solid var(--line);
-      background: var(--bg-soft); box-shadow: var(--shadow);
-    }
+    .modal-card { border-radius: var(--radius-lg); border: 1px solid var(--line); background: var(--bg-soft); box-shadow: var(--shadow); }
     .modal-head, .modal-body, .modal-foot { padding: 32px; }
     .modal-head { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 1px solid var(--line); }
     .modal-foot { border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
     
     .modal-close {
       width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line);
-      display: grid; place-items: center; font-size: 1.2rem; color: var(--muted);
-      transition: var(--transition);
+      display: grid; place-items: center; font-size: 1.2rem; color: var(--muted); transition: var(--transition);
     }
     .modal-close:hover { color: var(--text); border-color: var(--text); transform: rotate(90deg); }
 
     /* Toast */
     .toast {
-      position: fixed; right: 24px; bottom: 24px; z-index: 130;
-      padding: 16px 24px; border-radius: var(--radius-sm); border: 1px solid var(--primary);
-      background: var(--surface-2); color: var(--text); box-shadow: var(--shadow-soft);
+      position: fixed; right: 24px; bottom: 24px; z-index: 130; padding: 16px 24px; border-radius: var(--radius-sm);
+      border: 1px solid var(--primary); background: var(--surface-2); color: var(--text); box-shadow: var(--shadow-soft);
       transform: translateY(20px); opacity: 0; visibility: hidden; transition: var(--transition);
     }
     .toast.show { transform: translateY(0); opacity: 1; visibility: visible; }
 
     /* Custom Cursor */
-    .cursor-dot, .cursor-ring {
-      position: fixed; top: 0; left: 0; pointer-events: none; z-index: 140; border-radius: 50%;
-      opacity: 0; transition: opacity 200ms ease;
-    }
+    .cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 140; border-radius: 50%; opacity: 0; transition: opacity 200ms ease; }
     .cursor-dot { width: 6px; height: 6px; background: var(--primary-2); transform: translate(-50%, -50%); }
-    .cursor-ring {
-      width: 40px; height: 40px; border: 1px solid rgba(162, 187, 165, 0.4);
-      transform: translate(-50%, -50%); transition: width 200ms ease, height 200ms ease, background 200ms ease;
-    }
+    .cursor-ring { width: 40px; height: 40px; border: 1px solid rgba(162, 187, 165, 0.4); transform: translate(-50%, -50%); transition: width 200ms ease, height 200ms ease, background 200ms ease; }
     .cursor-ring.active { width: 60px; height: 60px; background: rgba(162, 187, 165, 0.1); border-color: transparent;}
 
     .hide-mobile { display: inline-flex; }
@@ -640,7 +435,7 @@
       .project-grid { grid-template-columns: 1fr; }
       .hero { min-height: auto; }
       .organic-frame { height: 500px; }
-      .skill-spotlight-wrapper { position: static; } /* Remove sticky on mobile */
+      .skill-spotlight-wrapper { position: static; } 
     }
     @media (max-width: 920px) {
       .nav-links, .hide-mobile { display: none; }
@@ -719,7 +514,7 @@
               </h1>
 
               <p class="lead">
-                I am Nikitha Keshan — a software developer focused on the intersection of elegant web design and seamless business operations. I create tools that remove friction and interfaces that feel natural.
+                I am Nikitha Keshan — an IT Administrator and software developer focusing on elegant web interfaces, seamless WooCommerce integration, and business operations automation.
               </p>
             </div>
 
@@ -730,7 +525,7 @@
             
             <div class="chip-row" style="margin-top: 16px;">
               <div class="chip"><i class="ph-light ph-map-pin"></i> Colombo, Sri Lanka</div>
-              <div class="chip"><i class="ph-light ph-code"></i> Full Stack & UI/UX</div>
+              <div class="chip"><i class="ph-light ph-code"></i> Developer & Operations</div>
             </div>
           </div>
 
@@ -750,7 +545,7 @@
                   </div>
                   <div class="field-item">
                     <span class="field-key">Core Tools</span>
-                    <span class="field-value">C#, React, Node, SQL, Python</span>
+                    <span class="field-value">C#, React, Python, WordPress, Apps Script</span>
                   </div>
                   <div class="field-item">
                     <span class="field-key">Approach</span>
@@ -785,7 +580,7 @@
             <article class="card card-pad">
               <div class="icon-box" aria-hidden="true"><i class="ph-light ph-arrows-out-line-vertical"></i></div>
               <h3 class="title-sm" style="margin: 24px 0 12px;">Scalable Logic</h3>
-              <p class="small">Automations and microservices built to grow with the business, reducing manual load over time.</p>
+              <p class="small">Automations, dashboards, and Scripts built to grow with the business, reducing manual load over time.</p>
             </article>
           </div>
         </section>
@@ -805,9 +600,9 @@
             <article class="card card-pad reveal">
               <div class="mono" style="margin-bottom: 16px;"><i class="ph-light ph-book-open"></i> The Narrative</div>
               <h3 class="title-md" style="margin-bottom: 20px;">Merging academic theory with ground-level execution.</h3>
-              <p class="small" style="margin-bottom: 16px;">I am an Information Technology undergraduate currently applying my knowledge directly to corporate environments. Serving as an IT Administrator and freelance developer allows me to test theories against real-world friction.</p>
-              <p class="small" style="margin-bottom: 16px;">I care deeply about typography, spacing, and visual calm, but I am equally passionate about REST APIs, server architecture, and writing scripts to eliminate hours of manual data entry.</p>
-              <p class="small">This dual perspective—caring about the surface and the structure—defines my work.</p>
+              <p class="small" style="margin-bottom: 16px;">I am an Information Technology undergraduate currently applying my knowledge directly to corporate environments. Serving as an Assistant IT Administrator at the CER Group of Companies and collaborating as a developer with Codenest allows me to test theories against real-world friction.</p>
+              <p class="small" style="margin-bottom: 16px;">I manage IT systems, build KPI dashboards, write Google Apps scripts to eliminate hours of manual entry, and maintain WooCommerce platforms for various brands. Simultaneously, I care deeply about typography, spacing, and visual calm on the frontend.</p>
+              <p class="small">This dual perspective—caring deeply about the surface aesthetic and the structural operations—defines my work.</p>
             </article>
 
             <article class="card card-pad reveal" style="transition-delay: 100ms;">
@@ -870,7 +665,7 @@
                 </div>
                 <div class="skill-tags">
                   <button class="skill-pill" data-skill="react">React & Next.js</button>
-                  <button class="skill-pill" data-skill="blazor">.NET Blazor</button>
+                  <button class="skill-pill" data-skill="wordpress">WordPress & Woo</button>
                   <button class="skill-pill" data-skill="htmlcss">HTML & CSS</button>
                   <button class="skill-pill" data-skill="tailwind">Tailwind & UI</button>
                 </div>
@@ -883,7 +678,6 @@
                 <div class="skill-tags">
                   <button class="skill-pill" data-skill="dotnet">.NET Core</button>
                   <button class="skill-pill" data-skill="nodejs">Node.js</button>
-                  <button class="skill-pill" data-skill="django">Django / Python</button>
                   <button class="skill-pill" data-skill="sql">SQL / MySQL</button>
                   <button class="skill-pill" data-skill="nosql">PostgreSQL / Mongo</button>
                 </div>
@@ -932,76 +726,106 @@
           <div class="section-head reveal">
             <div>
               <div class="section-tag mono"><i class="ph-light ph-folder-open"></i> Work</div>
-              <h2 class="title-lg">Selected deployments.</h2>
+              <h2 class="title-lg">Selected deployments & repos.</h2>
             </div>
-            <p class="lead">A collection of web interfaces, internal tools, and strategic brand solutions.</p>
+            <p class="lead">A collection of live e-commerce interfaces, brand solutions, and GitHub mini-projects.</p>
           </div>
 
           <div class="project-toolbar reveal" id="projectFilters">
             <button class="btn btn-ghost active" data-filter="all">Everything</button>
-            <button class="btn btn-ghost" data-filter="web">Web Interfaces</button>
-            <button class="btn btn-ghost" data-filter="automation">Automations</button>
+            <button class="btn btn-ghost" data-filter="live">Live Sites</button>
+            <button class="btn btn-ghost" data-filter="repo">Repositories</button>
           </div>
 
           <div class="project-grid" id="projectGrid">
             
-            <article class="project-card reveal" data-category="web">
+            <article class="project-card reveal" data-category="live">
               <div class="project-visual">
                 <i class="ph-light ph-sparkle"></i>
               </div>
               <div class="project-tags">
                 <span class="project-tag">E-Commerce</span>
-                <span class="project-tag">UI / UX</span>
+                <span class="project-tag">WooCommerce</span>
               </div>
-              <h3 class="title-md" style="margin-bottom: 12px;">Biseka Cosmetics Platform</h3>
+              <h3 class="title-md" style="margin-bottom: 12px;">Biseka Cosmetics</h3>
               <p class="small">Engineered the digital storefront. Focused on high-performance load times, a natural aesthetic, and a premium user journey to elevate online conversions.</p>
               <div class="project-links">
-                <button class="text-link" data-open-project="biseka">Read Case Study <i class="ph-light ph-arrow-right"></i></button>
+                <button class="text-link" data-open-project="biseka">View Details <i class="ph-light ph-arrow-right"></i></button>
               </div>
             </article>
 
-            <article class="project-card reveal" data-category="web" style="transition-delay: 100ms;">
+            <article class="project-card reveal" data-category="live" style="transition-delay: 100ms;">
               <div class="project-visual">
-                <i class="ph-light ph-buildings"></i>
+                <i class="ph-light ph-waves"></i>
               </div>
               <div class="project-tags">
-                <span class="project-tag">Agency Site</span>
-                <span class="project-tag">Frontend</span>
+                <span class="project-tag">E-Commerce</span>
+                <span class="project-tag">Brand Presence</span>
               </div>
-              <h3 class="title-md" style="margin-bottom: 12px;">Alpha Brand Solutions</h3>
-              <p class="small">Developed the complete technical web presence and brand identity architecture for a rising marketing agency, prioritizing clean layout and credibility.</p>
+              <h3 class="title-md" style="margin-bottom: 12px;">MOB Surfskate & OLA Hotel</h3>
+              <p class="small">Collaborated closely with Codenest to engineer premium frontend experiences for diverse lifestyle and hospitality brands, prioritizing clean layout.</p>
               <div class="project-links">
-                <button class="text-link" data-open-project="alpha">Read Case Study <i class="ph-light ph-arrow-right"></i></button>
+                <button class="text-link" data-open-project="mobola">View Details <i class="ph-light ph-arrow-right"></i></button>
               </div>
             </article>
 
-            <article class="project-card reveal" data-category="automation">
+            <article class="project-card reveal" data-category="live">
               <div class="project-visual">
-                <i class="ph-light ph-kanban"></i>
+                <i class="ph-light ph-drop"></i>
               </div>
               <div class="project-tags">
-                <span class="project-tag">Python</span>
-                <span class="project-tag">Logic Systems</span>
+                <span class="project-tag">E-Commerce</span>
+                <span class="project-tag">WordPress</span>
               </div>
-              <h3 class="title-md" style="margin-bottom: 12px;">Workflow Systems</h3>
-              <p class="small">Architected internal tools including automated invoice generators and bulk email pipelines, saving hours of manual administrative work weekly.</p>
+              <h3 class="title-md" style="margin-bottom: 12px;">Love & Lab / Scrub & Butter</h3>
+              <p class="small">Developed the technical web presence and brand identity architecture for multiple cosmetics and perfume brands under the CER Group umbrella.</p>
               <div class="project-links">
-                <button class="text-link" data-open-project="workflow">Read Case Study <i class="ph-light ph-arrow-right"></i></button>
+                <button class="text-link" data-open-project="lovelab">View Details <i class="ph-light ph-arrow-right"></i></button>
               </div>
             </article>
 
-            <article class="project-card reveal" data-category="web" style="transition-delay: 100ms;">
+            <article class="project-card reveal" data-category="repo" style="transition-delay: 100ms;">
               <div class="project-visual">
-                <i class="ph-light ph-storefront"></i>
+                <i class="ph-light ph-users"></i>
               </div>
               <div class="project-tags">
-                <span class="project-tag">Client Deployments</span>
-                <span class="project-tag">Responsive Design</span>
+                <span class="project-tag">Web App</span>
+                <span class="project-tag">Form Logic</span>
               </div>
-              <h3 class="title-md" style="margin-bottom: 12px;">Hospitality & Retail UX</h3>
-              <p class="small">Collaborated closely with Codenest to engineer premium frontend experiences for diverse clients including boutique hotels and lifestyle brands.</p>
+              <h3 class="title-md" style="margin-bottom: 12px;">Employee Asset Form</h3>
+              <p class="small">Customer Care Employee Asset & Account form management system built and hosted via GitHub Pages for streamlined operational input.</p>
               <div class="project-links">
-                <button class="text-link" data-open-project="deployments">Read Case Study <i class="ph-light ph-arrow-right"></i></button>
+                <button class="text-link" data-open-project="employee">View Details <i class="ph-light ph-arrow-right"></i></button>
+              </div>
+            </article>
+
+            <article class="project-card reveal" data-category="repo">
+              <div class="project-visual">
+                <i class="ph-light ph-game-controller"></i>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">JavaScript</span>
+                <span class="project-tag">Canvas & Logic</span>
+              </div>
+              <h3 class="title-md" style="margin-bottom: 12px;">Mini Web Games & Canvas</h3>
+              <p class="small">Collection of creative coding repositories including a functional Snake Game and an interactive Neon Growing Flower animation.</p>
+              <div class="project-links">
+                <button class="text-link" data-open-project="games">View Details <i class="ph-light ph-arrow-right"></i></button>
+              </div>
+            </article>
+
+            <article class="project-card reveal" data-category="repo" style="transition-delay: 100ms;">
+              <div class="project-visual">
+                <i class="ph-light ph-film-strip"></i>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">UI Mockup</span>
+                <span class="project-tag">HTML / CSS</span>
+              </div>
+              <h3 class="title-md" style="margin-bottom: 12px;">Movie & Travel UIs</h3>
+              <p class="small">Clean, single-page UI architecture repositories built to demonstrate layout structuring, flexbox, and responsive design fundamentals.</p>
+              <div class="project-links">
+                <button class="text-link" data-open-project="uimockups">View Details <i class="ph-light ph-arrow-right"></i></button>
               </div>
             </article>
 
@@ -1024,13 +848,14 @@
               <h3 class="title-sm" style="margin-bottom: 12px; font-family:var(--font-mono); text-transform:uppercase; color:var(--muted)">Professional Focus</h3>
               
               <article class="timeline-card">
-                <div class="eyebrow">2024 — Present <span class="status">• Active</span></div>
-                <h3 class="title-sm" style="margin-bottom: 6px;">IT Administrator</h3>
-                <p class="small" style="color: var(--primary-2); margin-bottom: 16px;">Biseka Cosmetics</p>
+                <div class="eyebrow">July 2024 — Present <span class="status">• Active</span></div>
+                <h3 class="title-sm" style="margin-bottom: 6px;">Assistant IT Administrator</h3>
+                <p class="small" style="color: var(--primary-2); margin-bottom: 16px;">CER Group of Companies</p>
                 <ul class="timeline-list">
-                  <li><i class="ph-light ph-check-circle"></i> Manage internal technical infrastructure and data security.</li>
-                  <li><i class="ph-light ph-check-circle"></i> Develop and maintain the official e-commerce web platform.</li>
-                  <li><i class="ph-light ph-check-circle"></i> Architect system automations to streamline administrative operations.</li>
+                  <li><i class="ph-light ph-check-circle"></i> Manage IT systems, operations, and troubleshooting across multiple brands (Biseka, Scrub&Butter, ExactExtract, etc).</li>
+                  <li><i class="ph-light ph-check-circle"></i> Build KPI tracking dashboards in Looker Studio and update database reports.</li>
+                  <li><i class="ph-light ph-check-circle"></i> Develop automation scripts using Google Apps Script to improve data flow.</li>
+                  <li><i class="ph-light ph-check-circle"></i> Handle e-commerce updates (pricing/products) and manage Google Ads / Meta Suite integrations.</li>
                 </ul>
               </article>
 
@@ -1039,8 +864,8 @@
                 <h3 class="title-sm" style="margin-bottom: 6px;">Web Developer (Collaborator)</h3>
                 <p class="small" style="color: var(--primary-2); margin-bottom: 16px;">Codenest</p>
                 <ul class="timeline-list">
-                  <li><i class="ph-light ph-check-circle"></i> Engineer custom frontend solutions for marketing agency clients.</li>
-                  <li><i class="ph-light ph-check-circle"></i> Translate complex UI/UX design files into semantic, responsive code.</li>
+                  <li><i class="ph-light ph-check-circle"></i> Collaborate on engineering custom frontend solutions and WordPress integrations for various clients.</li>
+                  <li><i class="ph-light ph-check-circle"></i> Handle hosting deployments and semantic, responsive code translation.</li>
                 </ul>
               </article>
             </div>
@@ -1049,18 +874,45 @@
                <h3 class="title-sm" style="margin-bottom: 12px; font-family:var(--font-mono); text-transform:uppercase; color:var(--muted)">Academic Roots</h3>
                
               <article class="timeline-card">
-                <div class="eyebrow">2024 — 2028</div>
+                <div class="eyebrow">Undergraduate</div>
                 <h3 class="title-sm" style="margin-bottom: 6px;">BSc in Information Technology</h3>
-                <p class="small" style="color: var(--primary-2); margin-bottom: 12px;">University / Institute Name</p>
-                <p class="small">Rigorous study of software engineering principles, database architecture, and computer science fundamentals.</p>
+                <p class="small" style="color: var(--primary-2); margin-bottom: 12px;">University of Colombo</p>
+                <p class="small">Rigorous study of software engineering principles, architecture, and computer science fundamentals.</p>
               </article>
 
               <article class="timeline-card">
-                <div class="eyebrow">2025 — 2027</div>
-                <h3 class="title-sm" style="margin-bottom: 6px;">HND in Information Technology</h3>
+                <div class="eyebrow">Diploma</div>
+                <h3 class="title-sm" style="margin-bottom: 6px;">HND in Computer Science</h3>
                 <p class="small" style="color: var(--primary-2); margin-bottom: 12px;">Londontech City Campus</p>
-                <p class="small">Practical Higher National Diploma reinforcing hands-on coding paradigms and network logic application.</p>
+                <p class="small">Practical Higher National Diploma reinforcing hands-on coding paradigms.</p>
               </article>
+
+              <article class="timeline-card">
+                <div class="eyebrow">Certification</div>
+                <h3 class="title-sm" style="margin-bottom: 6px;">Python & Web Development</h3>
+                <p class="small" style="color: var(--primary-2); margin-bottom: 12px;">University of Moratuwa</p>
+              </article>
+
+              <article class="timeline-card">
+                <div class="eyebrow">Foundation Program</div>
+                <h3 class="title-sm" style="margin-bottom: 6px;">Neuroscience, Programming & Robotics</h3>
+                <p class="small" style="color: var(--primary-2); margin-bottom: 12px;">JAVA Institute</p>
+              </article>
+
+              <article class="timeline-card">
+                <div class="eyebrow">2022 / 2023</div>
+                <h3 class="title-sm" style="margin-bottom: 6px;">G.C.E. Advanced Level</h3>
+                <p class="small" style="color: var(--primary-2); margin-bottom: 12px;">D. S. Senanayake College, Beruwela</p>
+                <p class="small">Engineering Technology Stream (C1, S2).</p>
+              </article>
+
+              <article class="timeline-card">
+                <div class="eyebrow">2019</div>
+                <h3 class="title-sm" style="margin-bottom: 6px;">G.C.E. Ordinary Level</h3>
+                <p class="small" style="color: var(--primary-2); margin-bottom: 12px;">Tissa Central College, Kalutara</p>
+                <p class="small">Results: A4, B1, C4.</p>
+              </article>
+
             </div>
           </div>
         </div>
@@ -1084,10 +936,10 @@
               <div class="contact-list">
                 <div class="contact-item">
                   <div style="display:flex; align-items:center; gap: 16px;">
-                    <i class="ph-light ph-envelope-simple"></i>
+                    <i class="ph-light ph-envelope-simple main-icon"></i>
                     <div>
                       <div class="small" style="margin-bottom: 4px;">Email</div>
-                      <strong id="emailText">hello@example.com</strong>
+                      <strong id="emailText">nikithakeshan@gmail.com</strong>
                     </div>
                   </div>
                   <button class="btn btn-secondary" id="copyEmailBtn" type="button" style="min-height:36px; padding:0 16px;">Copy</button>
@@ -1095,19 +947,23 @@
                 
                 <div class="contact-item">
                   <div style="display:flex; align-items:center; gap: 16px;">
-                    <i class="ph-light ph-map-pin"></i>
+                    <i class="ph-light ph-phone main-icon"></i>
                     <div>
-                      <div class="small" style="margin-bottom: 4px;">Location</div>
-                      <strong>Colombo, Sri Lanka</strong>
+                      <div class="small" style="margin-bottom: 4px;">Phone</div>
+                      <strong id="phoneText">+94 764 849 127</strong>
                     </div>
                   </div>
+                  <button class="btn btn-secondary" id="copyPhoneBtn" type="button" style="min-height:36px; padding:0 16px;">Copy</button>
                 </div>
 
                 <div class="contact-item" style="flex-direction:column; align-items:flex-start; gap: 20px;">
                   <div class="small">Digital Footprint</div>
                   <div class="chip-row">
-                    <a href="#" class="chip"><i class="ph-fill ph-linkedin-logo"></i> LinkedIn</a>
-                    <a href="#" class="chip"><i class="ph-fill ph-github-logo"></i> GitHub</a>
+                    <a href="https://www.linkedin.com/in/nikitha-keshan-640927325/" target="_blank" class="chip"><i class="ph-fill ph-linkedin-logo"></i> LinkedIn</a>
+                    <a href="https://github.com/nikithaKesh" target="_blank" class="chip"><i class="ph-fill ph-github-logo"></i> GitHub</a>
+                    <a href="https://www.instagram.com/z.onoo/" target="_blank" class="chip"><i class="ph-fill ph-instagram-logo"></i> Instagram</a>
+                    <a href="https://www.facebook.com/nikitha.keshan.7?mibextid=ZbWKwL" target="_blank" class="chip"><i class="ph-fill ph-facebook-logo"></i> Facebook</a>
+                    <a href="https://x.com/_zo_no_" target="_blank" class="chip"><i class="ph-fill ph-x-logo"></i> Twitter</a>
                   </div>
                 </div>
               </div>
@@ -1177,8 +1033,9 @@
         <ul class="bullet-list" id="modalBullets"></ul>
       </div>
       <div class="modal-foot">
-        <span class="small">Live deployment coming soon.</span>
-        <button class="btn btn-secondary" id="modalDone">Close Window</button>
+        <span class="small" id="modalSubtext">Live deployment / Codebase.</span>
+        <div id="modalActionContainer">
+          </div>
       </div>
     </div>
   </div>
@@ -1196,6 +1053,9 @@
 
     yearEl.textContent = new Date().getFullYear();
 
+    // ==========================================
+    // UPDATED SKILL DATA
+    // ==========================================
     const skillData = {
       csharp: {
         title: 'C# / .NET', label: 'Backend & Architecture', level: 85,
@@ -1215,7 +1075,7 @@
           '<i class="ph-light ph-check"></i> Strong fit for business problem-solving and automation.',
           '<i class="ph-light ph-check"></i> Supports the technical foundation of my machine learning knowledge.'
         ],
-        tools: ['Django', 'MVT', 'Data Pipelines', 'AI / ML']
+        tools: ['Django', 'Data Pipelines', 'AI / ML']
       },
       java: {
         title: 'Java', label: 'OOP Foundations', level: 75,
@@ -1267,15 +1127,15 @@
         ],
         tools: ['React.js', 'Next.js', 'Redux', 'Components']
       },
-      blazor: {
-        title: 'Blazor & XAML', label: '.NET UI', level: 80,
-        description: 'I leverage the C# ecosystem to build seamless, unified web and application interfaces using Blazor and XAML.',
+      wordpress: {
+        title: 'WordPress & Woo', label: 'CMS & E-Commerce', level: 85,
+        description: 'Building and maintaining robust e-commerce platforms and content management systems for real-world brands.',
         bullets: [
-          '<i class="ph-light ph-check"></i> Building rich interactive UIs using C# instead of JS.',
-          '<i class="ph-light ph-check"></i> Deep integration with existing .NET backend services.',
-          '<i class="ph-light ph-check"></i> Cross-platform interface design.'
+          '<i class="ph-light ph-check"></i> Deep WooCommerce integration and setup.',
+          '<i class="ph-light ph-check"></i> Managing hosting, backups, and security.',
+          '<i class="ph-light ph-check"></i> Translating custom UI designs into functional themes.'
         ],
-        tools: ['Blazor', 'XAML', 'MAUI', '.NET UI']
+        tools: ['WordPress', 'WooCommerce', 'Hosting']
       },
       htmlcss: {
         title: 'HTML5 & CSS3', label: 'Visual Architecture', level: 92,
@@ -1298,14 +1158,14 @@
         tools: ['Tailwind CSS', 'Material UI', 'Design Systems']
       },
       dotnet: {
-        title: '.NET Core & Node', label: 'Backend Systems', level: 82,
+        title: '.NET Core', label: 'Backend Systems', level: 82,
         description: 'Crafting robust, scalable enterprise backends, microservices, and fast event-driven APIs.',
         bullets: [
           '<i class="ph-light ph-check"></i> Building secure, high-performance REST APIs.',
           '<i class="ph-light ph-check"></i> Implementing microservices architecture.',
           '<i class="ph-light ph-check"></i> Handling complex business logic securely on the server.'
         ],
-        tools: ['.NET Core', 'Node.js', 'Microservices', 'REST APIs']
+        tools: ['.NET Core', 'Microservices', 'REST APIs']
       },
       nodejs: {
         title: 'Node.js', label: 'Async Backend', level: 82,
@@ -1316,16 +1176,6 @@
           '<i class="ph-light ph-check"></i> Extensive integration with modern cloud platforms.'
         ],
         tools: ['Node.js', 'Express', 'Async Logic', 'APIs']
-      },
-      django: {
-        title: 'Django / PHP', label: 'Rapid Backend', level: 75,
-        description: 'Utilizing robust frameworks like Django alongside legacy PHP to build secure, data-driven web applications quickly.',
-        bullets: [
-          '<i class="ph-light ph-check"></i> High-level Python frameworks that encourage clean design.',
-          '<i class="ph-light ph-check"></i> Excellent for rapid prototyping and moving ideas to production.',
-          '<i class="ph-light ph-check"></i> Built-in security and administration panels.'
-        ],
-        tools: ['Django', 'PHP', 'MVT Architecture']
       },
       sql: {
         title: 'SQL / MySQL', label: 'Relational Data', level: 84,
@@ -1355,7 +1205,7 @@
           '<i class="ph-light ph-check"></i> Building beautiful, customized mobile UI components.',
           '<i class="ph-light ph-check"></i> Connects seamlessly to REST APIs and Firebase.'
         ],
-        tools: ['Flutter', 'Dart', 'Android', 'MAUI']
+        tools: ['Flutter', 'Dart', 'Android']
       },
       figma: {
         title: 'Figma & UI', label: 'Prototyping', level: 85,
@@ -1391,44 +1241,76 @@
 
     const projectData = {
       biseka: {
-        title: 'Biseka Cosmetics Web Platform',
+        title: 'Biseka Cosmetics Platform',
         description: 'A cosmetics-focused brand website cultivated for cleaner presentation, stronger structure, and high-end storefront credibility.',
-        tags: ['Web Development', 'UI / UX', 'Brand Presence'],
+        tags: ['E-Commerce', 'WooCommerce', 'Brand Presence'],
         bullets: [
           '<i class="ph-light ph-check"></i> Built to feel inherently premium and natural.',
           '<i class="ph-light ph-check"></i> Focused on product presentation and navigation clarity.',
-          '<i class="ph-light ph-check"></i> Combines aesthetic taste with practical business intent.'
-        ]
+          '<i class="ph-light ph-check"></i> Managed via WooCommerce.'
+        ],
+        url: 'https://biseka.co/',
+        btnText: 'Visit Live Site'
       },
-      alpha: {
-        title: 'Alpha Brand Solutions',
-        description: 'A concept-driven agency website system that frames services strategically and visually.',
-        tags: ['Agency Website', 'Direction', 'Frontend'],
-        bullets: [
-          '<i class="ph-light ph-check"></i> Communicates modern capability and premium positioning.',
-          '<i class="ph-light ph-check"></i> Proof of design and service architecture thinking.',
-          '<i class="ph-light ph-check"></i> Built for high conversion and lead generation.'
-        ]
-      },
-      workflow: {
-        title: 'Workflow Automation Systems',
-        description: 'Internal tools built to clear the underbrush of repetitive tasks using Scripts, exports, and invoice logic.',
-        tags: ['Automation', 'Logic', 'Internal Tools'],
-        bullets: [
-          '<i class="ph-light ph-check"></i> Generates immediate operational efficiency.',
-          '<i class="ph-light ph-check"></i> Includes PDF exports, email flows, and dashboards.',
-          '<i class="ph-light ph-check"></i> A major differentiator in my builder profile.'
-        ]
-      },
-      deployments: {
-        title: 'Client-Facing Web Deployments',
-        description: 'Frontend implementation across hospitality and retail contexts, built collaboratively.',
-        tags: ['Client Work', 'Responsive Frontend', 'Execution'],
+      mobola: {
+        title: 'MOB Surfskate & OLA Hotel',
+        description: 'Collaborative frontend implementations and WordPress integrations for diverse lifestyle and hospitality brands via Codenest.',
+        tags: ['Hospitality', 'Retail', 'Frontend'],
         bullets: [
           '<i class="ph-light ph-check"></i> Shows adaptability across different visual identities.',
           '<i class="ph-light ph-check"></i> High-fidelity translation from design files to code.',
           '<i class="ph-light ph-check"></i> Prioritizes performance and mobile responsiveness.'
-        ]
+        ],
+        url: 'https://mobsurfskate.com/',
+        btnText: 'View MOB Surfskate'
+      },
+      lovelab: {
+        title: 'Love & Lab / Scrub & Butter',
+        description: 'Development and maintenance of e-commerce web presences for cosmetics and lifestyle brands under the CER Group.',
+        tags: ['WordPress', 'Operations', 'E-Commerce'],
+        bullets: [
+          '<i class="ph-light ph-check"></i> Handling product updates, pricing, and promotional rollouts.',
+          '<i class="ph-light ph-check"></i> Ensuring smooth user checkout workflows.',
+          '<i class="ph-light ph-check"></i> Integrated with Google Ads and Merchant Center.'
+        ],
+        url: 'https://loveandlab.com/',
+        btnText: 'View Love&Lab Site'
+      },
+      employee: {
+        title: 'Employee Asset Management',
+        description: 'A Customer Care Employee Asset & Account form management system built for streamlined operational input and tracking.',
+        tags: ['Web App', 'Forms', 'JavaScript'],
+        bullets: [
+          '<i class="ph-light ph-check"></i> Replaces messy paper processes with clean digital input.',
+          '<i class="ph-light ph-check"></i> Built with pure HTML/CSS/JS.',
+          '<i class="ph-light ph-check"></i> Hosted efficiently via GitHub Pages.'
+        ],
+        url: 'https://nikithakesh.github.io/Employee-Assets/',
+        btnText: 'View Application'
+      },
+      games: {
+        title: 'Canvas & Creative Web Games',
+        description: 'A collection of creative coding repositories utilizing JavaScript logic and HTML Canvas manipulation.',
+        tags: ['JavaScript', 'Canvas', 'Logic'],
+        bullets: [
+          '<i class="ph-light ph-check"></i> Fully functional Snake Game built with vanilla JS.',
+          '<i class="ph-light ph-check"></i> Interactive Neon Growing Flower animation.',
+          '<i class="ph-light ph-check"></i> Demonstrates core logic and frame-by-frame rendering.'
+        ],
+        url: 'https://nikithakesh.github.io/snake-game/',
+        btnText: 'Play Snake Game'
+      },
+      uimockups: {
+        title: 'Movie & Travel UI Mockups',
+        description: 'Clean, single-page UI architecture repositories built to demonstrate layout structuring, flexbox, and responsive design fundamentals.',
+        tags: ['UI Mockup', 'HTML / CSS', 'Layout'],
+        bullets: [
+          '<i class="ph-light ph-check"></i> Pixel-perfect translations of mockups into pure code.',
+          '<i class="ph-light ph-check"></i> Fully responsive logic for mobile viewing.',
+          '<i class="ph-light ph-check"></i> Focus on semantic tags and clean stylesheets.'
+        ],
+        url: 'https://nikithakesh.github.io/movie/',
+        btnText: 'View Movie Mockup'
       }
     };
 
@@ -1518,16 +1400,22 @@
       document.getElementById('modalDescription').textContent = data.description;
       document.getElementById('modalTags').innerHTML = data.tags.map(t => `<span class="chip">${t}</span>`).join('');
       document.getElementById('modalBullets').innerHTML = data.bullets.map(b => `<li>${b}</li>`).join('');
+      
+      const actionContainer = document.getElementById('modalActionContainer');
+      actionContainer.innerHTML = `<a href="${data.url}" target="_blank" class="btn btn-primary" style="min-height:44px; padding:0 24px;">${data.btnText}</a>`;
+
       document.getElementById('modalBackdrop').classList.add('show');
       document.getElementById('projectModal').classList.add('show');
       document.body.style.overflow = 'hidden';
     }
+    
     function closeProjectModal() {
       document.getElementById('modalBackdrop').classList.remove('show');
       document.getElementById('projectModal').classList.remove('show');
       document.body.style.overflow = mobilePanel.classList.contains('open') ? 'hidden' : '';
     }
-    [document.getElementById('modalBackdrop'), document.getElementById('modalClose'), document.getElementById('modalDone')].forEach(el => el.addEventListener('click', closeProjectModal));
+    
+    [document.getElementById('modalBackdrop'), document.getElementById('modalClose')].forEach(el => el.addEventListener('click', closeProjectModal));
     document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeProjectModal(); closeMobileMenu(); }});
 
     document.getElementById('contactForm').addEventListener('submit', (e) => {
@@ -1541,6 +1429,11 @@
 
     document.getElementById('copyEmailBtn').addEventListener('click', async () => {
       try { await navigator.clipboard.writeText(document.getElementById('emailText').textContent.trim()); showToast('Email copied to clipboard.'); } 
+      catch { showToast('Copy failed.'); }
+    });
+
+    document.getElementById('copyPhoneBtn').addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(document.getElementById('phoneText').textContent.replace(/\s+/g, '')); showToast('Phone number copied.'); } 
       catch { showToast('Copy failed.'); }
     });
 
