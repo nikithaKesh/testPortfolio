@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nikitha Keshan - Software Developer & System Automation Creator. Building practical digital solutions and modern web experiences.">
+    <title>Nikitha Keshan | Software & Automation Developer</title>
+    
+    <style>
+        :root {
+            /* Color Palette: Deep Charcoal, Ivory, Muted Copper/Bronze */
+            --bg-base: #0a0a0a;
+            --bg-surface: #111111;
+            --bg-glass: rgba(255, 255, 255, 0.02);
+            --bg-glass-hover: rgba(255, 255, 255, 0.05);
+            
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --border-light: rgba(255, 255, 255, 0.15);
+            
+            --text-primary: #f2efe9; /* Warm Ivory */
+            --text-secondary: #9ca3af; /* Olive/Gray */
+            --text-muted: #6b7280;
+            
+            --accent-main: #c48259; /* Muted Bronze/Copper */
+            --accent-glow: rgba(196, 130, 89, 0.15);
+            --accent-hover: #df976a;
+
+            /* Spacing & Layout */
+            --nav-height: 80px;
+            --container-width: 1200px;
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Ambient Background Glow */
+        .ambient-glow {
+            position: fixed;
+            top: -20%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            filter: blur(80px);
+        }
+
+        .ambient-glow.right {
+            top: auto;
+            bottom: -20%;
+            left: auto;
+            right: -10%;
+            background: radial-gradient(circle, rgba(255,255,255,0.02) 0%, transparent 60%);
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4 {
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        
+        h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
+        h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem; }
+        h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        p { color: var(--text-secondary); font-size: 1.125rem; }
+        
+        .text-accent { color: var(--accent-main); }
+        .text-light { color: var(--text-primary); }
+
+        /* --- LAYOUT & COMPONENTS --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .section-padding { padding: 120px 0; }
+
+        /* Glassmorphism Classes */
+        .glass-panel {
+            background: var(--bg-glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
+            padding: 2.5rem;
+            transition: transform var(--transition-smooth), border-color var(--transition-fast);
+        }
+
+        .glass-panel:hover {
+            border-color: var(--border-light);
+            transform: translateY(-4px);
+            background: var(--bg-glass-hover);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.875rem 1.75rem;
+            border-radius: 100px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--accent-main);
+            color: #000;
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: scale(1.02);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border-color: var(--border-light);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-glass-hover);
+            border-color: var(--text-primary);
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-height);
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glass);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.05em;
+        }
+
+        .logo span { color: var(--accent-main); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color var(--transition-fast);
+            cursor: pointer;
+        }
+
+        .nav-links li a:hover, .nav-links li a.active {
+            color: var(--text-primary);
+        }
+
+        .mobile-toggle {
+            display: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* --- SPA PAGE SECTIONS --- */
+        .page-view {
+            display: none;
+            opacity: 0;
+            animation: fadeIn var(--transition-smooth) forwards;
+            padding-top: var(--nav-height);
+            min-height: 100vh;
+        }
+
+        .page-view.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: calc(100vh - var(--nav-height));
+            position: relative;
+        }
+
+        .hero-subtitle {
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.875rem;
+            color: var(--accent-main);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        /* Metrics Strip */
+        .metrics-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-glass);
+        }
+
+        .metric h4 { font-size: 2.5rem; color: var(--text-primary); }
+        .metric p { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+        /* Client Strip */
+        .client-strip {
+            margin-top: 4rem;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            opacity: 0.5;
+            filter: grayscale(100%);
+        }
+
+        .client-placeholder {
+            font-weight: 600;
+            font-size: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        /* --- GRID LAYOUTS --- */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+        /* --- IMAGE PLACEHOLDERS --- */
+        .img-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--bg-surface) 0%, #1a1a1a 100%);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--border-light);
+            font-size: 0.875rem;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .img-placeholder::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.03), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            100% { left: 200%; }
+        }
+
+        /* --- SKILLS SECTION --- */
+        .skill-group { margin-bottom: 3rem; }
+        .skill-group h3 { border-bottom: 1px solid var(--border-glass); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+        .skill-card {
+            background: var(--bg-surface);
+            padding: 1.5rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-glass);
+        }
+        .skill-header { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
+        .skill-name { color: var(--text-primary); font-weight: 500; }
+        .skill-use { font-size: 0.9rem; color: var(--text-secondary); }
+
+        /* --- PROJECTS SECTION --- */
+        .filter-nav {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: none; border: 1px solid var(--border-glass);
+            color: var(--text-secondary); padding: 0.5rem 1rem;
+            border-radius: 100px; cursor: pointer; transition: all var(--transition-fast);
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--text-primary); color: var(--bg-base);
+        }
+
+        .project-card {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .project-img { height: 240px; margin-bottom: 1.5rem; border-radius: var(--radius-md); }
+        .project-tags { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;}
+        .tag { font-size: 0.75rem; padding: 0.25rem 0.75rem; background: var(--bg-glass); border-radius: 100px; border: 1px solid var(--border-glass); color: var(--accent-main); }
+        
+        /* --- TIMELINE (EXPERIENCE & ABOUT) --- */
+        .timeline { border-left: 2px solid var(--border-glass); padding-left: 2rem; margin-top: 2rem; }
+        .timeline-item { position: relative; margin-bottom: 3rem; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -35px; top: 5px;
+            width: 12px; height: 12px; border-radius: 50%;
+            background: var(--accent-main); border: 4px solid var(--bg-base);
+        }
+        .timeline-date { font-size: 0.875rem; color: var(--accent-main); margin-bottom: 0.5rem; display: block; }
+        
+        /* --- PROCESS DIAGRAM --- */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            position: relative;
+        }
+        .process-step {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
+            position: relative;
+            z-index: 2;
+        }
+        .process-step h4 { color: var(--text-primary); margin-bottom: 0.5rem; }
+        .process-line {
+            position: absolute; top: 50%; left: 10%; width: 80%; height: 2px;
+            background: var(--border-glass); z-index: 1;
+        }
+
+        /* --- FORMS --- */
+        .form-group { margin-bottom: 1.5rem; }
+        .form-label { display: block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-primary); }
+        .form-control {
+            width: 100%; padding: 1rem;
+            background: rgba(255,255,255,0.02); border: 1px solid var(--border-glass);
+            border-radius: var(--radius-sm); color: var(--text-primary); font-size: 1rem;
+            transition: border-color var(--transition-fast);
+        }
+        .form-control:focus { outline: none; border-color: var(--accent-main); }
+        textarea.form-control { min-height: 150px; resize: vertical; }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid var(--border-glass);
+            padding: 3rem 0;
+            margin-top: 5rem;
+            text-align: center;
+        }
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1.5rem; }
+        .social-links a { color: var(--text-secondary); text-decoration: none; transition: color var(--transition-fast); }
+        .social-links a:hover { color: var(--accent-main); }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 992px) {
+            .grid-4 { grid-template-columns: repeat(2, 1fr); }
+            .grid-3 { grid-template-columns: repeat(2, 1fr); }
+            .process-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+            .process-line { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed; top: var(--nav-height); left: 0; width: 100%;
+                background: var(--bg-surface); flex-direction: column; gap: 0;
+                border-bottom: 1px solid var(--border-glass); display: none;
+            }
+            .nav-links.show { display: flex; }
+            .nav-links li { border-top: 1px solid var(--border-glass); }
+            .nav-links li a { display: block; padding: 1.5rem; text-align: center; }
+            .mobile-toggle { display: block; }
+            
+            .grid-2 { grid-template-columns: 1fr; gap: 2rem; }
+            .grid-3 { grid-template-columns: 1fr; }
+            .grid-4 { grid-template-columns: 1fr; }
+            .metrics-strip { grid-template-columns: repeat(2, 1fr); }
+            .client-strip { flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+            
+            .hero { text-align: center; align-items: center; }
+            .hero-actions { justify-content: center; }
+            .process-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+    <div class="ambient-glow right"></div>
+
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo" onclick="app.navigate('home')">NK<span>.</span></a>
+            <ul class="nav-links" id="nav-links">
+                <li><a onclick="app.navigate('home')" class="nav-item active" data-target="home">Home</a></li>
+                <li><a onclick="app.navigate('about')" class="nav-item" data-target="about">About</a></li>
+                <li><a onclick="app.navigate('skills')" class="nav-item" data-target="skills">Skills</a></li>
+                <li><a onclick="app.navigate('projects')" class="nav-item" data-target="projects">Projects</a></li>
+                <li><a onclick="app.navigate('experience')" class="nav-item" data-target="experience">Experience</a></li>
+                <li><a onclick="app.navigate('services')" class="nav-item" data-target="services">Services</a></li>
+                <li><a onclick="app.navigate('contact')" class="nav-item" data-target="contact">Contact</a></li>
+            </ul>
+            <button class="mobile-toggle" onclick="app.toggleMenu()">☰</button>
+        </div>
+    </nav>
+
+    <main>
+        <section id="home" class="page-view active">
+            <div class="container">
+                <div class="hero">
+                    <span class="hero-subtitle">Nikitha Keshan</span>
+                    <h1>Building websites, automations, and digital systems that solve real problems.</h1>
+                    <p style="margin-top: 1.5rem; max-width: 600px;">
+                        I am a developer who bridges software, workflow automation, and modern web experiences. I don't just write code—I build practical solutions that reduce manual work and create serious business value.
+                    </p>
+                    <div class="hero-actions">
+                        <a onclick="app.navigate('projects')" class="btn btn-primary">View Projects</a>
+                        <a href="#cv-placeholder" class="btn btn-secondary">Download CV</a>
+                    </div>
+
+                    <div class="metrics-strip">
+                        <div class="metric">
+                            <h4>12+</h4>
+                            <p>Websites Built</p>
+                        </div>
+                        <div class="metric">
+                            <h4>8+</h4>
+                            <p>Systems Automated</p>
+                        </div>
+                        <div class="metric">
+                            <h4>2+</h4>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="metric">
+                            <h4>100%</h4>
+                            <p>Delivery Rate</p>
+                        </div>
+                    </div>
+
+                    <div class="client-strip">
+                        <span class="client-placeholder">Biseka Cosmetics</span>
+                        <span class="client-placeholder">Codenest</span>
+                        <span class="client-placeholder">LoveandLab</span>
+                        <span class="client-placeholder">OLA Tangalle</span>
+                        <span class="client-placeholder">MOB Surfskate</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="page-view">
+            <div class="container section-padding">
+                <div class="grid-2">
+                    <div>
+                        <h2>Practical builder. System thinker.</h2>
+                        <p style="margin-bottom: 1.5rem;">
+                            I am an undergraduate student at the University of Colombo and following an HND at Londontech City Campus. But more importantly, I am a practical builder.
+                        </p>
+                        <p style="margin-bottom: 2.5rem;">
+                            My focus is on software development, web development, internal business systems, and workflow improvement. I understand that businesses don't just need code; they need outcomes. They need workflows to be faster, data to be clearer, and digital presence to be modern and credible.
+                        </p>
+
+                        <h3>Education</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <span class="timeline-date">2024 – 2028</span>
+                                <h4>Bachelor in Information Technology</h4>
+                                <p>University of Colombo</p>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-date">2025 – 2027</span>
+                                <h4>Higher National Diploma (HND)</h4>
+                                <p>Londontech City Campus</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="img-placeholder" style="height: 500px;">
+                            [ Professional Portrait Placeholder ]
+                        </div>
+                        
+                        <div class="glass-panel" style="margin-top: 2rem;">
+                            <h3>What Makes Me Different</h3>
+                            <p style="font-size: 0.95rem;">
+                                I combine software development, automation logic, UI-focused thinking, and business system practicality. Instead of siloed development, I look at the entire process to turn manual bottlenecks into efficient, polished digital tools.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="page-view">
+            <div class="container section-padding">
+                <h2 style="text-align: center;">Technical Arsenal</h2>
+                <p style="text-align: center; margin-bottom: 4rem;">Tools and languages I use to build complete solutions.</p>
+
+                <div class="grid-2">
+                    <div>
+                        <div class="skill-group">
+                            <h3>Core Programming</h3>
+                            <div class="grid-2" style="gap: 1rem;">
+                                <div class="skill-card">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Python</span>
+                                    </div>
+                                    <div class="skill-use">Backend logic, automation scripts, data tools.</div>
+                                </div>
+                                <div class="skill-card">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Java</span>
+                                    </div>
+                                    <div class="skill-use">Enterprise structure, OOP software systems.</div>
+                                </div>
+                                <div class="skill-card">
+                                    <div class="skill-header">
+                                        <span class="skill-name">C#</span>
+                                    </div>
+                                    <div class="skill-use">Desktop apps, structured enterprise logic.</div>
+                                </div>
+                                <div class="skill-card">
+                                    <div class="skill-header">
+                                        <span class="skill-name">C++</span>
+                                    </div>
+                                    <div class="skill-use">Low-level logic, memory-efficient tooling.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-group">
+                            <h3>Web Development</h3>
+                            <div class="grid-2" style="gap: 1rem;">
+                                <div class="skill-card">
+                                    <div class="skill-header">
+                                        <span class="skill-name">JavaScript</span>
+                                    </div>
+                                    <div class="skill-use">Interactive UI, frontend routing, dynamic behavior.</div>
+                                </div>
+                                <div class="skill-card">
+                                    <div class="skill-header">
+                                        <span class="skill-name">HTML & CSS</span>
+                                    </div>
+                                    <div class="skill-use">Semantic structure, responsive modern glass UI.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="skill-group">
+                            <h3>Automation & Business Tools</h3>
+                            <div class="grid-2" style="gap: 1rem;">
+                                <div class="skill-card">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Google Apps Script</span>
+                                    </div>
+                                    <div class="skill-use">Workspace automation, custom sheets logic, email tools.</div>
+                                </div>
+                                <div class="skill-card">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Excel VBA & Macros</span>
+                                    </div>
+                                    <div class="skill-use">Legacy data automation, reporting, formatting.</div>
+                                </div>
+                                <div class="skill-card" style="grid-column: span 2;">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Workflow Architecture</span>
+                                    </div>
+                                    <div class="skill-use">Designing invoice generators, CMS logic, email systems, and process improvement frameworks.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-group">
+                            <h3>Databases</h3>
+                            <div class="grid-2" style="gap: 1rem;">
+                                <div class="skill-card">
+                                    <div class="skill-header">
+                                        <span class="skill-name">SQL / MySQL</span>
+                                    </div>
+                                    <div class="skill-use">Relational design, querying, structured data management.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="page-view">
+            <div class="container section-padding">
+                <h2>Featured Work</h2>
+                <p style="margin-bottom: 2rem;">A selection of websites, automation tools, and business systems.</p>
+
+                <div class="filter-nav">
+                    <button class="filter-btn active" onclick="app.filterProjects('all')">All</button>
+                    <button class="filter-btn" onclick="app.filterProjects('website')">Websites</button>
+                    <button class="filter-btn" onclick="app.filterProjects('automation')">Automation</button>
+                    <button class="filter-btn" onclick="app.filterProjects('tools')">Internal Tools</button>
+                </div>
+
+                <div class="grid-3" id="projects-grid">
+                    </div>
+            </div>
+        </section>
+
+        <section id="project-detail" class="page-view">
+            <div class="container section-padding">
+                <a onclick="app.navigate('projects')" style="color: var(--accent-main); cursor: pointer; display: inline-block; margin-bottom: 2rem;">← Back to Projects</a>
+                
+                <div class="grid-2">
+                    <div>
+                        <h2 id="cs-title">Project Title</h2>
+                        <div class="project-tags" id="cs-tags" style="margin-bottom: 2rem;"></div>
+                        
+                        <h3>The Challenge</h3>
+                        <p id="cs-problem" style="margin-bottom: 1.5rem;"></p>
+                        
+                        <h3>The Solution</h3>
+                        <p id="cs-solution" style="margin-bottom: 2rem;"></p>
+
+                        <div class="hero-actions">
+                            <a href="#live-demo-placeholder" class="btn btn-primary">View Live Demo</a>
+                            <a href="#github-placeholder" class="btn btn-secondary">View Source Code</a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="img-placeholder" style="height: 400px; margin-bottom: 1.5rem;" id="cs-image-main">
+                            [ High-Res Project Preview ]
+                        </div>
+                        <div class="grid-2" style="gap: 1.5rem;">
+                            <div class="img-placeholder" style="height: 150px;">[ Detail 1 ]</div>
+                            <div class="img-placeholder" style="height: 150px;">[ Detail 2 ]</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="page-view">
+            <div class="container section-padding">
+                <div class="grid-2">
+                    <div>
+                        <h2>Professional Experience</h2>
+                        <p style="margin-bottom: 3rem;">Real-world application of development, administration, and system logic.</p>
+
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <span class="timeline-date">2024 – 2026</span>
+                                <h4>IT Administrator</h4>
+                                <h5 class="text-accent" style="margin-bottom: 1rem;">Biseka Cosmetics</h5>
+                                <p>
+                                    Managed internal IT operations, deployed technical solutions, and supported business infrastructure. Created process improvement systems ensuring reliable daily technical workflows.
+                                </p>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-date">Freelance / Collaboration</span>
+                                <h4>Web Developer & Tech Partner</h4>
+                                <h5 class="text-accent" style="margin-bottom: 1rem;">Codenest & Independent Clients</h5>
+                                <p>
+                                    Collaborated on multiple end-to-end web projects. Acted as a technical builder translating client requirements into functional, aesthetic, and high-performing websites.
+                                </p>
+                                <ul style="margin-top: 1rem; color: var(--text-secondary); padding-left: 1.5rem;">
+                                    <li>LoveandLab Website</li>
+                                    <li>Biseka Official Website</li>
+                                    <li>OLA Tangalle Hotel Website</li>
+                                    <li>MOB Surfskate Platform</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="glass-panel" style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                            <div class="img-placeholder" style="height: 300px; margin-bottom: 2rem;">
+                                [ Workflow / Coding Workstation Visual Placeholder ]
+                            </div>
+                            <h3>Focus on Impact</h3>
+                            <p>
+                                My professional experience is rooted in responsibility. Whether administrating systems for Biseka or coding websites with Codenest, my primary metric for success is reliability, efficiency, and real-world value.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="page-view">
+            <div class="container section-padding">
+                <h2 style="text-align: center;">What I Can Do For You</h2>
+                <p style="text-align: center; margin-bottom: 4rem;">Transforming manual tasks and outdated platforms into efficient digital systems.</p>
+
+                <div class="grid-3" style="margin-bottom: 5rem;">
+                    <div class="glass-panel">
+                        <h3 class="text-accent">Modern Web Development</h3>
+                        <p>Portfolio websites, business landing pages, and web applications built cleanly without bloat. Fast, responsive, and designed for conversion.</p>
+                    </div>
+                    <div class="glass-panel">
+                        <h3 class="text-accent">Workflow Automation</h3>
+                        <p>Turning repetitive tasks into automated background processes using Google Apps Script, Python, and automated logic flows.</p>
+                    </div>
+                    <div class="glass-panel">
+                        <h3 class="text-accent">Internal Business Tools</h3>
+                        <p>Custom invoice generators, email sending systems, CMS platforms, and data reporting dashboards customized to your exact operational needs.</p>
+                    </div>
+                </div>
+
+                <h3>How I Work: From Idea to System</h3>
+                <div class="process-line-container" style="position: relative; margin-top: 2rem;">
+                    <div class="process-line"></div>
+                    <div class="process-grid">
+                        <div class="process-step">
+                            <div style="font-size: 2rem; color: var(--accent-main); margin-bottom: 1rem;">01</div>
+                            <h4>Discover</h4>
+                            <p style="font-size: 0.9rem;">Analyze your current workflow, bottleneck, or design requirement.</p>
+                        </div>
+                        <div class="process-step">
+                            <div style="font-size: 2rem; color: var(--accent-main); margin-bottom: 1rem;">02</div>
+                            <h4>Plan</h4>
+                            <p style="font-size: 0.9rem;">Map out the system architecture, UI UX structure, and tech stack.</p>
+                        </div>
+                        <div class="process-step">
+                            <div style="font-size: 2rem; color: var(--accent-main); margin-bottom: 1rem;">03</div>
+                            <h4>Build</h4>
+                            <p style="font-size: 0.9rem;">Develop the solution with clean code and modern standards.</p>
+                        </div>
+                        <div class="process-step">
+                            <div style="font-size: 2rem; color: var(--accent-main); margin-bottom: 1rem;">04</div>
+                            <h4>Optimize</h4>
+                            <p style="font-size: 0.9rem;">Test, deploy, and refine the process for long-term stability.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="page-view">
+            <div class="container section-padding">
+                <div class="grid-2">
+                    <div>
+                        <h2>Let's build something efficient.</h2>
+                        <p style="margin-bottom: 2rem;">
+                            Whether you're looking to hire a software developer, need a freelance web partner, or want to automate your business workflows—let's talk.
+                        </p>
+
+                        <div class="glass-panel" style="margin-bottom: 2rem;">
+                            <h4 style="margin-bottom: 1rem;">Contact Details</h4>
+                            <p style="margin-bottom: 0.5rem;"><strong class="text-light">Email:</strong> placeholder@email.com</p>
+                            <p style="margin-bottom: 0.5rem;"><strong class="text-light">Location:</strong> Colombo, Sri Lanka</p>
+                            <a href="#cv-placeholder" class="btn btn-primary" style="margin-top: 1.5rem;">Download Resume</a>
+                        </div>
+
+                        <div class="social-links" style="justify-content: flex-start;">
+                            <a href="#linkedin-placeholder">LinkedIn</a>
+                            <a href="#github-placeholder">GitHub</a>
+                            <a href="#whatsapp-placeholder">WhatsApp</a>
+                            <a href="#instagram-placeholder">Instagram</a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="glass-panel">
+                            <form onsubmit="event.preventDefault(); alert('Form submission placeholder logic triggered.');">
+                                <div class="form-group">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" class="form-control" placeholder="John Doe" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" placeholder="john@company.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Subject</label>
+                                    <input type="text" class="form-control" placeholder="Freelance / Hiring / Inquiry" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Message</label>
+                                    <textarea class="form-control" placeholder="Tell me about your project or opportunity..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <h2 style="font-size: 1.5rem; margin-bottom: 1rem;">Nikitha Keshan</h2>
+            <p style="font-size: 0.9rem;">Bridging software, automation, and modern web experiences.</p>
+            <div class="social-links">
+                <a href="#linkedin">LinkedIn</a>
+                <a href="#github">GitHub</a>
+                <a href="#email">Email</a>
+            </div>
+            <p style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Nikitha Keshan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const app = {
+            // Project Database
+            projects: [
+                {
+                    id: 'loveandlab',
+                    title: 'LoveandLab Website',
+                    category: 'website',
+                    summary: 'A complete modern web presence built for aesthetic brand representation.',
+                    problem: 'The client needed a highly visual, modern website that communicated their brand identity effectively without looking like a standard template.',
+                    solution: 'Developed a custom frontend solution focusing on fluid animations, premium typography, and an intuitive user experience to elevate brand perception.',
+                    tags: ['HTML', 'CSS', 'JavaScript', 'Web Dev'],
+                    image: '[ LoveandLab Preview ]'
+                },
+                {
+                    id: 'biseka',
+                    title: 'Biseka Official Website',
+                    category: 'website',
+                    summary: 'Corporate website development alongside IT administration.',
+                    problem: 'Biseka required an official digital storefront to showcase their cosmetic product line and establish digital credibility.',
+                    solution: 'Built a responsive, easily navigable site highlighting product categories while ensuring fast load times and mobile accessibility.',
+                    tags: ['Web Dev', 'UI/UX', 'Business Systems'],
+                    image: '[ Biseka Web Preview ]'
+                },
+                {
+                    id: 'ola-tangalle',
+                    title: 'OLA Tangalle Hotel',
+                    category: 'website',
+                    summary: 'Hospitality website designed for conversion and visual storytelling.',
+                    problem: 'The hotel needed to showcase its property globally to tourists while facilitating direct inquiries.',
+                    solution: 'Delivered a premium, photography-forward website with integrated contact and inquiry flows optimized for international visitors.',
+                    tags: ['Web Design', 'Frontend', 'Hospitality'],
+                    image: '[ OLA Tangalle Preview ]'
+                },
+                {
+                    id: 'mob-surfskate',
+                    title: 'MOB Surfskate',
+                    category: 'website',
+                    summary: 'Energetic, modern platform for a niche sports brand.',
+                    problem: 'The brand required an edgy, motion-heavy website that matched the dynamic nature of surfskating.',
+                    solution: 'Implemented custom CSS animations and a bold UI to capture the brand spirit, integrating an easy-to-update content structure.',
+                    tags: ['JavaScript', 'CSS Animations', 'Brand Identity'],
+                    image: '[ MOB Surfskate Preview ]'
+                },
+                {
+                    id: 'invoice-gen',
+                    title: 'Automated Invoice Generator',
+                    category: 'tools',
+                    summary: 'Internal business tool converting raw data into formatted PDFs.',
+                    problem: 'Manual invoice creation was causing billing delays and human error in data entry.',
+                    solution: 'Engineered an automated script that parses sales data and instantly outputs formatted, calculation-perfect PDF invoices.',
+                    tags: ['Python', 'Automation', 'Business Logic'],
+                    image: '[ Invoice Tool Dashboard Preview ]'
+                },
+                {
+                    id: 'email-system',
+                    title: 'Bulk Email Workflow System',
+                    category: 'automation',
+                    summary: 'Automated communication system using Google Apps Script.',
+                    problem: 'Sending personalized updates to hundreds of clients manually was an unscalable, hours-long task.',
+                    solution: 'Wrote a custom Google Apps Script integrated with Sheets to parse contact rows and auto-dispatch personalized HTML emails with dynamic attachments.',
+                    tags: ['Google Apps Script', 'Google Sheets', 'Workflow'],
+                    image: '[ Email Script Logic Preview ]'
+                }
+            ],
+
+            init() {
+                this.renderProjects('all');
+                
+                // Handle initial load hash routing if present
+                const hash = window.location.hash.replace('#', '');
+                if(hash && document.getElementById(hash)) {
+                    this.navigate(hash);
+                }
+            },
+
+            // Navigation Router
+            navigate(pageId) {
+                // Update views
+                document.querySelectorAll('.page-view').forEach(view => {
+                    view.classList.remove('active');
+                });
+                const target = document.getElementById(pageId);
+                if(target) target.classList.add('active');
+
+                // Update Nav UI
+                document.querySelectorAll('.nav-item').forEach(link => {
+                    link.classList.remove('active');
+                    if(link.getAttribute('data-target') === pageId) {
+                        link.classList.add('active');
+                    }
+                });
+
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // Close mobile menu if open
+                const navLinks = document.getElementById('nav-links');
+                if(navLinks.classList.contains('show')) {
+                    navLinks.classList.remove('show');
+                }
+
+                // Update URL for history
+                history.pushState(null, null, `#${pageId}`);
+            },
+
+            toggleMenu() {
+                document.getElementById('nav-links').classList.toggle('show');
+            },
+
+            // Project Rendering & Filtering
+            renderProjects(filter) {
+                const grid = document.getElementById('projects-grid');
+                grid.innerHTML = '';
+
+                // Update Filter UI
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                event && event.target ? event.target.classList.add('active') : document.querySelector('.filter-btn').classList.add('active');
+
+                const filtered = filter === 'all' 
+                    ? this.projects 
+                    : this.projects.filter(p => p.category === filter);
+
+                filtered.forEach(proj => {
+                    const tagsHtml = proj.tags.map(t => `<span class="tag">${t}</span>`).join('');
+                    
+                    const card = document.createElement('div');
+                    card.className = 'glass-panel project-card';
+                    card.onclick = () => this.openCaseStudy(proj.id);
+                    
+                    card.innerHTML = `
+                        <div class="img-placeholder project-img">
+                            ${proj.image}
+                        </div>
+                        <h3 style="margin-bottom: 0.5rem; color: var(--text-primary);">${proj.title}</h3>
+                        <div class="project-tags">${tagsHtml}</div>
+                        <p style="font-size: 0.9rem; margin-bottom: 1.5rem; flex-grow: 1;">${proj.summary}</p>
+                        <span style="color: var(--accent-main); font-size: 0.9rem; font-weight: 500;">View Case Study →</span>
+                    `;
+                    grid.appendChild(card);
+                });
+            },
+
+            filterProjects(filter) {
+                this.renderProjects(filter);
+            },
+
+            openCaseStudy(id) {
+                const project = this.projects.find(p => p.id === id);
+                if(!project) return;
+
+                document.getElementById('cs-title').innerText = project.title;
+                document.getElementById('cs-problem').innerText = project.problem;
+                document.getElementById('cs-solution').innerText = project.solution;
+                document.getElementById('cs-image-main').innerText = project.image;
+                
+                const tagsHtml = project.tags.map(t => `<span class="tag">${t}</span>`).join('');
+                document.getElementById('cs-tags').innerHTML = tagsHtml;
+
+                this.navigate('project-detail');
+            }
+        };
+
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', () => {
+            app.init();
+        });
+
+        // Handle Browser Back/Forward navigation
+        window.addEventListener('popstate', () => {
+            const hash = window.location.hash.replace('#', '');
+            if(hash && document.getElementById(hash)) {
+                app.navigate(hash);
+            } else {
+                app.navigate('home');
+            }
+        });
+    </script>
+</body>
+</html>
