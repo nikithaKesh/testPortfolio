@@ -490,17 +490,35 @@
     .highlight-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 32px; }
 
     /* =========================================
-       ABOUT SECTION SPECIFICS
+       ABOUT SECTION SPECIFICS (Redesigned Profile Layout)
        ========================================= */
-    .about-header-container { display: flex; gap: 24px; align-items: flex-start; }
-    .about-image {
-        width: 100px; height: 100px; border-radius: 50%;
-        object-fit: cover; border: 2px solid var(--line-strong);
-        background: var(--surface-3);
+    .about-profile-layout {
+      display: grid; grid-template-columns: 240px 1fr; gap: 32px;
+      margin-bottom: 24px;
     }
-    @media (max-width: 640px) {
-        .about-header-container { flex-direction: column; }
-        .about-image { width: 80px; height: 80px; }
+
+    .about-image-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4/5;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--surface-3);
+    }
+
+    .about-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(20%) contrast(1.1); /* Subtle editorial filter */
+      transition: var(--transition);
+    }
+    .card-pad:hover .about-image { filter: grayscale(0%) contrast(1); }
+
+    @media (max-width: 768px) {
+      .about-profile-layout { grid-template-columns: 1fr; }
+      .about-image-wrapper { aspect-ratio: 16/9; max-height: 300px; }
     }
 
     /* =========================================
@@ -895,15 +913,21 @@
 
           <div class="highlight-grid">
             <article class="card card-pad reveal">
-              <div class="about-header-container" style="margin-bottom: 24px;">
-                <img src="1760549322866.png" alt="Nikitha Keshan" class="about-image">
+              
+              <div class="about-profile-layout">
+                <div class="about-image-wrapper">
+                    <img src="1760549322866.png" alt="Nikitha Keshan Portrait" class="about-image">
+                </div>
+                
                 <div>
-                  <div class="mono" style="margin-bottom: 8px;"><i class="ph-light ph-book-open"></i> The Narrative</div>
-                  <h3 class="title-md">Merging academic theory with ground-level execution.</h3>
+                  <div class="mono" style="margin-bottom: 16px;"><i class="ph-light ph-book-open"></i> The Narrative</div>
+                  <h3 class="title-md" style="margin-bottom: 20px;">Merging academic theory with ground-level execution.</h3>
+                  <p class="small" style="margin-bottom: 16px;">I am Nikitha Keshan, an aspiring Software Engineer focused on web development, software development, and system automation. My career goal is to become a professional software engineer who builds practical digital solutions that solve real business problems.</p>
+                  <p class="small" style="margin-bottom: 16px;">I have experience creating websites, developing internal tools, and building automation systems that improve workflows, reduce manual work, and support business operations.</p>
+                  <p class="small">I enjoy turning ideas and processes into useful, modern digital systems.</p>
                 </div>
               </div>
-              <p class="small" style="margin-bottom: 16px;">I am Nikitha Keshan, an aspiring Software Engineer focused on web development, software development, and system automation. My career goal is to become a professional software engineer who builds practical digital solutions that solve real business problems.</p>
-              <p class="small" style="margin-bottom: 16px;">I have experience creating websites, developing internal tools, and building automation systems that improve workflows, reduce manual work, and support business operations. I enjoy turning ideas and processes into useful, modern digital systems.</p>
+
             </article>
 
             <article class="card card-pad reveal" style="transition-delay: 100ms;">
@@ -1822,7 +1846,7 @@
       if(data.url) {
         linkSpace.innerHTML = `<a href="${data.url}" target="_blank" class="text-link" style="font-size: 1rem;">View Live Project <i class="ph-light ph-arrow-up-right"></i></a>`;
       } else {
-        linkSpace.innerHTML = `Internal/Backend System Tool`;
+        linkSpace.innerHTML = `Live deployment coming soon.`;
       }
 
       document.getElementById('modalBackdrop').classList.add('show');
