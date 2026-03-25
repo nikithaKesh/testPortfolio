@@ -516,7 +516,7 @@
     .text-link:hover { gap: 12px; color: var(--text); border-color: var(--text); }
 
     /* =========================================
-       EXPERIENCE TIMELINE (Perfected Math)
+       EXPERIENCE TIMELINE & FOUNDATION GRIDS
        ========================================= */
     .timeline-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
     
@@ -533,7 +533,7 @@
     .timeline-card {
       position: relative; padding: 28px;
       border-radius: var(--radius-md); border: 1px solid var(--line); background: var(--surface);
-      display: flex; flex-direction: column; flex: 1; /* Card alignment */
+      display: flex; flex-direction: column; flex: 1;
     }
     
     .timeline-card::before {
@@ -552,6 +552,15 @@
     .timeline-list li { display: flex; align-items: flex-start; gap: 12px; color: var(--muted); line-height: 1.6; font-weight: 300;}
     .timeline-list li i { color: var(--primary-2); font-size: 1.1rem; margin-top: 2px;}
 
+    /* Foundation Grid inside Timeline */
+    .foundation-grid { display: grid; gap: 16px; margin-top: 16px;}
+    .foundation-card {
+      padding: 16px 20px; border-radius: var(--radius-sm); border: 1px solid var(--line);
+      background: var(--surface-3);
+    }
+    .foundation-card h4 { font-family: var(--font-sans); font-size: 0.95rem; color: var(--text); margin-bottom: 4px;}
+    .foundation-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; font-weight: 300;}
+
     /* =========================================
        CONTACT FORM
        ========================================= */
@@ -562,7 +571,18 @@
       display: flex; align-items: center; justify-content: space-between; gap: 16px;
       padding: 20px; border-radius: var(--radius-sm); border: 1px solid var(--line); background: var(--surface);
     }
-    .contact-item i { font-size: 1.5rem; color: var(--primary-2); }
+    .contact-item i.main-icon { font-size: 1.5rem; color: var(--primary-2); }
+
+    /* Improved Social Buttons */
+    .social-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 10px 18px; border-radius: var(--radius-sm);
+      background: var(--surface-3); border: 1px solid var(--line);
+      color: var(--text); font-size: 0.9rem; font-weight: 500;
+      transition: var(--transition);
+    }
+    .social-btn i { font-size: 1.2rem; color: var(--primary-2); transition: var(--transition);}
+    .social-btn:hover { background: rgba(117, 146, 121, 0.1); border-color: var(--primary-2); transform: translateY(-2px); }
 
     .contact-form { display: grid; gap: 24px; }
     .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -1080,6 +1100,9 @@
                   <li><i class="ph-light ph-check-circle"></i> Manage Google Ads, Merchant Center, and Meta Business Suite integrations.</li>
                   <li><i class="ph-light ph-check-circle"></i> Build operational dashboards in Looker Studio for KPI tracking.</li>
                 </ul>
+                <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--line);">
+                    <p class="small" style="font-style: italic; color: var(--muted-2);">I do hereby declare that all statements made in this application are true and correct to the best of my knowledge.</p>
+                </div>
               </article>
 
             </div>
@@ -1103,13 +1126,26 @@
 
               <article class="timeline-card">
                 <div class="eyebrow">Prior Education</div>
-                <h3 class="title-sm" style="margin-bottom: 6px;">Foundational Studies</h3>
-                <ul class="timeline-list">
-                  <li><i class="ph-light ph-caret-right"></i> <strong>University of Moratuwa:</strong> Programming in Python & Web Development.</li>
-                  <li><i class="ph-light ph-caret-right"></i> <strong>JAVA Institute:</strong> Foundation in Neuroscience, Programming, Robotic Science.</li>
-                  <li><i class="ph-light ph-caret-right"></i> <strong>A-Levels (2022/2023):</strong> D.S. Senanayaka College - Engineering Technology.</li>
-                  <li><i class="ph-light ph-caret-right"></i> <strong>O-Levels (2019):</strong> Tissa Central College.</li>
-                </ul>
+                <h3 class="title-sm" style="margin-bottom: 16px;">Foundational Studies</h3>
+                
+                <div class="foundation-grid">
+                    <div class="foundation-card">
+                        <h4><i class="ph-light ph-code" style="color:var(--primary); margin-right:4px;"></i> University of Moratuwa</h4>
+                        <p>Programming in Python & Web Development.</p>
+                    </div>
+                    <div class="foundation-card">
+                        <h4><i class="ph-light ph-brain" style="color:var(--primary); margin-right:4px;"></i> JAVA Institute</h4>
+                        <p>Foundation in Neuroscience, Programming, and Robotic Science.</p>
+                    </div>
+                    <div class="foundation-card">
+                        <h4><i class="ph-light ph-exam" style="color:var(--primary); margin-right:4px;"></i> G.C.E. Advanced Level (2022/23)</h4>
+                        <p>D.S. Senanayake College, Beruwela.<br>Engineering Technology Stream.<br>Results: C1, S2.</p>
+                    </div>
+                    <div class="foundation-card">
+                        <h4><i class="ph-light ph-certificate" style="color:var(--primary); margin-right:4px;"></i> G.C.E. Ordinary Level (2019)</h4>
+                        <p>Tissa Central College, Kalutara.<br>Results: A4, B1, C4.</p>
+                    </div>
+                </div>
               </article>
             </div>
           </div>
@@ -1134,7 +1170,7 @@
               <div class="contact-list">
                 <div class="contact-item">
                   <div style="display:flex; align-items:center; gap: 16px;">
-                    <i class="ph-light ph-envelope-simple"></i>
+                    <i class="ph-light ph-envelope-simple main-icon"></i>
                     <div>
                       <div class="small" style="margin-bottom: 4px;">Email</div>
                       <strong id="emailText">nikithakeshan@gmail.com</strong>
@@ -1145,7 +1181,7 @@
                 
                 <div class="contact-item">
                   <div style="display:flex; align-items:center; gap: 16px;">
-                    <i class="ph-light ph-phone"></i>
+                    <i class="ph-light ph-phone main-icon"></i>
                     <div>
                       <div class="small" style="margin-bottom: 4px;">Phone</div>
                       <strong>+94 764849127</strong>
@@ -1156,11 +1192,11 @@
                 <div class="contact-item" style="flex-direction:column; align-items:flex-start; gap: 20px;">
                   <div class="small">Digital Footprint</div>
                   <div class="chip-row">
-                    <a href="https://www.linkedin.com/in/nikitha-keshan-640927325/" target="_blank" class="chip"><i class="ph-fill ph-linkedin-logo"></i> LinkedIn</a>
-                    <a href="https://github.com/nikithaKesh" target="_blank" class="chip"><i class="ph-fill ph-github-logo"></i> GitHub</a>
-                    <a href="https://x.com/_zo_no_" target="_blank" class="chip"><i class="ph-fill ph-twitter-logo"></i> X (Twitter)</a>
-                    <a href="https://www.instagram.com/z.onoo/" target="_blank" class="chip"><i class="ph-fill ph-instagram-logo"></i> Instagram</a>
-                    <a href="https://www.facebook.com/nikitha.keshan.7?mibextid=ZbWKwL" target="_blank" class="chip"><i class="ph-fill ph-facebook-logo"></i> Facebook</a>
+                    <a href="https://www.linkedin.com/in/nikitha-keshan-640927325/" target="_blank" class="social-btn"><i class="ph-fill ph-linkedin-logo"></i> LinkedIn</a>
+                    <a href="https://github.com/nikithaKesh" target="_blank" class="social-btn"><i class="ph-fill ph-github-logo"></i> GitHub</a>
+                    <a href="https://x.com/_zo_no_" target="_blank" class="social-btn"><i class="ph-fill ph-twitter-logo"></i> X (Twitter)</a>
+                    <a href="https://www.instagram.com/z.onoo/" target="_blank" class="social-btn"><i class="ph-fill ph-instagram-logo"></i> Instagram</a>
+                    <a href="https://www.facebook.com/nikitha.keshan.7?mibextid=ZbWKwL" target="_blank" class="social-btn"><i class="ph-fill ph-facebook-logo"></i> Facebook</a>
                   </div>
                 </div>
               </div>
@@ -1630,7 +1666,7 @@
         dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
         ring.animate({ transform: `translate(${e.clientX}px, ${e.clientY}px)` }, { duration: 150, fill: 'forwards' });
       });
-      document.querySelectorAll('a, button, input, textarea, .project-card, .skill-pill').forEach(el => {
+      document.querySelectorAll('a, button, input, textarea, .project-card, .skill-pill, .social-btn').forEach(el => {
         el.addEventListener('mouseenter', () => ring.classList.add('active'));
         el.addEventListener('mouseleave', () => ring.classList.remove('active'));
       });
