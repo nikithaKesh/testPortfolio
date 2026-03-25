@@ -17,24 +17,22 @@
        CSS VARIABLES: DARK NATURE / EDITORIAL THEME
        ========================================= */
     :root {
-      /* Earthy & Forest Palette */
-      --bg: #0b0e0c;          /* Deep Pine Black */
-      --bg-soft: #121713;     /* Dark Moss */
-      --surface: rgba(22, 28, 24, 0.65); /* Frosted Glass Green */
+      --bg: #0b0e0c;          
+      --bg-soft: #121713;     
+      --surface: rgba(22, 28, 24, 0.65); 
       --surface-2: rgba(30, 38, 32, 0.95);
       --surface-3: rgba(255, 255, 255, 0.03);
       
-      --text: #e8ece9;        /* Soft Birch White */
-      --muted: #9ba89f;       /* Sage Grey */
+      --text: #e8ece9;        
+      --muted: #9ba89f;       
       --muted-2: #6b7a70;
       
       --line: rgba(181, 201, 186, 0.12);
       --line-strong: rgba(181, 201, 186, 0.25);
       
-      /* Organic Accents */
-      --primary: #759279;     /* Core Sage Green */
-      --primary-2: #a2bba5;   /* Light Sage */
-      --accent: #d4c2a5;      /* Warm Sand / Stone */
+      --primary: #759279;     
+      --primary-2: #a2bba5;   
+      --accent: #d4c2a5;      
       --success: #82a886;
       --warning: #cfa874;
       
@@ -50,14 +48,15 @@
       --nav-h: 84px;
       --transition: 400ms cubic-bezier(0.25, 1, 0.35, 1);
       
-      /* Fonts */
       --font-sans: "DM Sans", sans-serif;
       --font-display: "Playfair Display", serif;
       --font-mono: "JetBrains Mono", monospace;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    
+    /* UX Fix: Prevents sections from hiding under sticky nav */
+    html { scroll-behavior: smooth; scroll-padding-top: 120px; }
 
     /* =========================================
        GLOBAL & AMBIENT NATURAL BACKGROUND
@@ -168,6 +167,9 @@
       -webkit-backdrop-filter: blur(20px);
       overflow: hidden;
       transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .card::before {
@@ -288,14 +290,13 @@
     .nav-link {
       min-height: 42px; padding: 0 18px; border-radius: var(--radius-sm);
       color: var(--muted); transition: var(--transition);
-      font-size: 0.95rem;
+      font-size: 0.95rem; display: flex; align-items: center;
     }
 
     .nav-link:hover, .nav-link.active { color: var(--text); background: var(--surface-3); }
 
     .nav-actions { display: flex; align-items: center; gap: 12px; }
 
-    /* Mobile Menu Toggle */
     .mobile-toggle {
       display: none; width: 46px; height: 46px; border-radius: var(--radius-sm);
       border: 1px solid var(--line); background: var(--surface-3); cursor: none;
@@ -333,21 +334,21 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .section { padding: 40px 0 80px; }
+    .section { padding: 60px 0 80px; }
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity 800ms ease, transform 800ms ease; }
     .reveal.show { opacity: 1; transform: translateY(0); }
 
     /* =========================================
-       HERO SECTION (ORGANIC VIBE)
+       HERO SECTION 
        ========================================= */
     .hero {
       display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px;
       align-items: center; min-height: calc(100vh - 160px);
     }
 
-    .hero-copy { display: flex; flex-direction: column; gap: 28px; }
+    .hero-copy { display: flex; flex-direction: column; gap: 24px; justify-content: center; }
 
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 10px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; }
 
     .hero-visual {
       position: relative; display: flex; align-items: center; justify-content: center;
@@ -407,8 +408,8 @@
     /* =========================================
        SECTION ARCHITECTURE
        ========================================= */
-    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 40px; }
-    .section-head .lead { max-width: 50ch; }
+    .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 48px; }
+    .section-head .lead { max-width: 50ch; margin-bottom: 8px;}
 
     .icon-box {
       width: 48px; height: 48px; min-width: 48px;
@@ -423,8 +424,9 @@
     .stack-item {
       padding: 24px; border-radius: var(--radius-md);
       border: 1px solid var(--line); background: var(--surface);
-      display: flex; align-items: start; gap: 20px;
+      display: flex; align-items: flex-start; gap: 20px;
       transition: var(--transition);
+      height: 100%;
     }
     .stack-item:hover { transform: translateX(6px); border-color: var(--primary); background: var(--surface-2); }
 
@@ -433,7 +435,7 @@
     /* =========================================
        SKILLS (INTERACTIVE SPOTLIGHT)
        ========================================= */
-    .spotlight-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .spotlight-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: flex-start;}
     
     .skill-groups { display: grid; gap: 24px; }
     .skill-group { padding: 28px; border-radius: var(--radius-md); border: 1px solid var(--line); background: var(--surface); }
@@ -443,17 +445,19 @@
     .skill-pill {
       min-height: 40px; padding: 0 16px; border-radius: var(--radius-sm);
       border: 1px solid var(--line); background: transparent; color: var(--muted);
-      transition: var(--transition);
+      transition: var(--transition); display: flex; align-items: center;
     }
     .skill-pill:hover, .skill-pill.active {
       color: var(--bg); background: var(--primary-2); border-color: var(--primary-2); transform: translateY(-2px);
     }
 
+    /* Fixed Sticky Wrapper for massive UX improvement */
+    .skill-spotlight-wrapper { position: sticky; top: 120px; height: max-content; }
+
     .skill-spotlight {
       display: flex; flex-direction: column; justify-content: space-between; gap: 24px;
       padding: 36px; border-radius: var(--radius-md); border: 1px solid var(--line);
       background: linear-gradient(180deg, var(--surface), rgba(14, 18, 15, 0.4));
-      min-height: 100%;
     }
     .skill-spotlight-head { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px; border-bottom: 1px solid var(--line); padding-bottom: 20px;}
     
@@ -461,7 +465,7 @@
     .skill-meter span { display: block; height: 100%; width: 0; background: var(--primary); transition: width 800ms ease; }
 
     .bullet-list { display: grid; gap: 14px; margin-top: 20px; }
-    .bullet-list li { display: flex; align-items: start; gap: 12px; color: var(--muted); line-height: 1.6; font-weight: 300; }
+    .bullet-list li { display: flex; align-items: flex-start; gap: 12px; color: var(--muted); line-height: 1.6; font-weight: 300; }
     .bullet-list li i { color: var(--primary-2); font-size: 1.1rem; margin-top: 2px; }
 
     /* =========================================
@@ -473,6 +477,7 @@
     .project-card {
       padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--line);
       background: var(--surface); transition: var(--transition);
+      display: flex; flex-direction: column; height: 100%; /* Flex alignment fix */
     }
     .project-card:hover {
       transform: translateY(-8px); border-color: var(--primary); background: var(--surface-2);
@@ -494,7 +499,7 @@
       background: var(--surface-3); color: var(--muted); font-size: 0.8rem;
     }
 
-    .project-links { margin-top: 24px; }
+    .project-links { margin-top: auto; padding-top: 24px; } /* Pushes to absolute bottom */
     .text-link {
       display: inline-flex; align-items: center; gap: 8px; color: var(--primary-2);
       font-weight: 500; transition: gap var(--transition), color var(--transition); border-bottom: 1px solid transparent; padding-bottom: 2px;
@@ -502,23 +507,31 @@
     .text-link:hover { gap: 12px; color: var(--text); border-color: var(--text); }
 
     /* =========================================
-       EXPERIENCE TIMELINE
+       EXPERIENCE TIMELINE (Aligned)
        ========================================= */
-    .timeline-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-    .timeline-column { display: grid; gap: 24px; }
+    .timeline-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    
+    .timeline-column { 
+      display: flex; flex-direction: column; gap: 32px; 
+      position: relative; padding-left: 28px;
+    }
+
+    /* The continuous line down the column */
+    .timeline-column::before {
+      content: ""; position: absolute; left: 0; top: 12px; bottom: 0; width: 1px;
+      background: var(--line-strong);
+    }
 
     .timeline-card {
-      position: relative; padding: 28px 28px 28px 48px;
+      position: relative; padding: 28px;
       border-radius: var(--radius-md); border: 1px solid var(--line); background: var(--surface);
     }
     
+    /* The dot perfectly aligned with the eyebrow */
     .timeline-card::before {
-      content: ""; position: absolute; top: 32px; left: 0; width: 1px; height: calc(100% - 32px);
-      background: var(--line-strong);
-    }
-    .timeline-card::after {
-      content: ""; position: absolute; top: 32px; left: -4px; width: 9px; height: 9px;
+      content: ""; position: absolute; left: -32.5px; top: 32px; width: 10px; height: 10px;
       border-radius: 50%; background: var(--primary); border: 2px solid var(--bg);
+      z-index: 2;
     }
 
     .eyebrow {
@@ -528,13 +541,13 @@
     .eyebrow .status { color: var(--accent); }
     
     .timeline-list { margin-top: 16px; display: grid; gap: 12px; }
-    .timeline-list li { display: flex; align-items: start; gap: 12px; color: var(--muted); line-height: 1.6; font-weight: 300;}
+    .timeline-list li { display: flex; align-items: flex-start; gap: 12px; color: var(--muted); line-height: 1.6; font-weight: 300;}
     .timeline-list li i { color: var(--primary-2); font-size: 1.1rem; margin-top: 2px;}
 
     /* =========================================
        CONTACT FORM
        ========================================= */
-    .contact-layout { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; }
+    .contact-layout { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; align-items: flex-start;}
     
     .contact-list { display: grid; gap: 16px; margin-top: 32px; }
     .contact-item {
@@ -543,8 +556,8 @@
     }
     .contact-item i { font-size: 1.5rem; color: var(--primary-2); }
 
-    .contact-form { display: grid; gap: 20px; }
-    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .contact-form { display: grid; gap: 24px; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
     .field { position: relative; }
     .field label { display: block; margin-bottom: 10px; color: var(--muted); font-size: 0.9rem; }
     
@@ -557,7 +570,7 @@
     .textarea { min-height: 180px; resize: vertical; }
     
     .input:focus, .textarea:focus {
-      border-color: var(--primary); background: rgba(117, 146, 121, 0.05);
+      border-color: var(--primary); background: rgba(117, 146, 121, 0.05); outline: none; box-shadow: 0 0 0 2px rgba(117, 146, 121, 0.2);
     }
 
     /* =========================================
@@ -627,6 +640,7 @@
       .project-grid { grid-template-columns: 1fr; }
       .hero { min-height: auto; }
       .organic-frame { height: 500px; }
+      .skill-spotlight-wrapper { position: static; } /* Remove sticky on mobile */
     }
     @media (max-width: 920px) {
       .nav-links, .hide-mobile { display: none; }
@@ -634,6 +648,8 @@
       .field-row, .grid-3 { grid-template-columns: 1fr; }
       .section-head, .footer-bar { flex-direction: column; align-items: flex-start; }
       .title-xl { font-size: clamp(2.8rem, 10vw, 4rem); }
+      .timeline-column { padding-left: 20px; }
+      .timeline-card::before { left: -24.5px; }
     }
     @media (max-width: 640px) {
       .container { width: calc(100% - 32px); }
@@ -641,8 +657,8 @@
       .brand-sub { display: none; }
       .hero-actions, .project-links, .chip-row { width: 100%; }
       .hero-actions .btn, .project-links .btn { width: 100%; }
-      .timeline-card { padding-left: 32px; }
       .card-pad, .skill-spotlight, .project-card, .skill-group, .modal-head, .modal-body, .modal-foot { padding: 24px; }
+      .timeline-card { padding: 24px; }
     }
   </style>
 </head>
@@ -884,27 +900,29 @@
                   <button class="skill-pill" data-skill="devops">Git & Docker</button>
                 </div>
               </div>
-
             </div>
 
-            <article class="skill-spotlight reveal" id="skillSpotlight" aria-live="polite">
-              <div>
-                <div class="skill-spotlight-head">
-                  <div>
-                    <div class="mono" style="margin-bottom: 8px;">Selected Discipline</div>
-                    <h3 class="title-md" id="skillTitle" style="font-family: var(--font-display); font-style:italic;">C#</h3>
+            <div class="skill-spotlight-wrapper reveal">
+              <article class="skill-spotlight" id="skillSpotlight" aria-live="polite">
+                <div>
+                  <div class="skill-spotlight-head">
+                    <div>
+                      <div class="mono" style="margin-bottom: 8px;">Selected Discipline</div>
+                      <h3 class="title-md" id="skillTitle" style="font-family: var(--font-display); font-style:italic;">C#</h3>
+                    </div>
+                    <div class="chip" id="skillLabel">Backend & Architecture</div>
                   </div>
-                  <div class="chip" id="skillLabel">Backend & Architecture</div>
-                </div>
 
-                <div style="margin-top: 24px;">
-                  <p class="small" id="skillDescription">I utilize C# to build out robust, strongly typed application logic and backend services, ensuring scale and maintainability.</p>
-                  <div class="skill-meter" aria-label="Skill confidence level"><span id="skillMeter"></span></div>
-                  <ul class="bullet-list" id="skillBullets"></ul>
+                  <div style="margin-top: 24px;">
+                    <p class="small" id="skillDescription">I utilize C# to build out robust, strongly typed application logic and backend services, ensuring scale and maintainability.</p>
+                    <div class="skill-meter" aria-label="Skill confidence level"><span id="skillMeter"></span></div>
+                    <ul class="bullet-list" id="skillBullets"></ul>
+                  </div>
                 </div>
-              </div>
-              <div class="chip-row" id="skillTools" style="margin-top:24px;"></div>
-            </article>
+                <div class="chip-row" id="skillTools" style="margin-top:24px;"></div>
+              </article>
+            </div>
+            
           </div>
         </div>
       </section>
@@ -1178,9 +1196,6 @@
 
     yearEl.textContent = new Date().getFullYear();
 
-    // ==========================================
-    // UPDATED SKILL DATA
-    // ==========================================
     const skillData = {
       csharp: {
         title: 'C# / .NET', label: 'Backend & Architecture', level: 85,
@@ -1424,7 +1439,6 @@
       showToast.timer = setTimeout(() => toast.classList.remove('show'), 3000);
     }
 
-    // SPA Routing
     function setActiveRoute(pageId) {
       pages.forEach(page => page.classList.toggle('active', page.dataset.page === pageId));
       routeLinks.forEach(link => link.classList.toggle('active', link.dataset.routeLink === pageId));
@@ -1440,7 +1454,6 @@
     window.addEventListener('hashchange', resolveRoute);
     resolveRoute();
 
-    // Mobile Menu
     function closeMobileMenu() {
       mobilePanel.classList.remove('open'); mobilePanel.setAttribute('aria-hidden', 'true');
       mobileToggle.classList.remove('active'); mobileToggle.setAttribute('aria-expanded', 'false');
@@ -1455,7 +1468,6 @@
       document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
-    // Global Clicks
     document.addEventListener('click', (e) => {
       const route = e.target.closest('[data-route-link]');
       const proj = e.target.closest('[data-open-project]');
@@ -1471,13 +1483,11 @@
 
     window.addEventListener('scroll', () => navShell.classList.toggle('scrolled', window.scrollY > 10));
 
-    // Scroll Reveal
     const revealObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    // Skills Interactive
     const skillPills = [...document.querySelectorAll('.skill-pill')];
     function renderSkill(key) {
       const data = skillData[key];
@@ -1491,9 +1501,8 @@
       setTimeout(() => document.getElementById('skillMeter').style.width = `${data.level}%`, 50);
     }
     skillPills.forEach(p => p.addEventListener('click', () => renderSkill(p.dataset.skill)));
-    renderSkill('csharp'); // Default to C# now to highlight backend depth
+    renderSkill('csharp'); 
 
-    // Projects Filter
     const filters = [...document.querySelectorAll('#projectFilters [data-filter]')];
     const cards = [...document.querySelectorAll('#projectGrid .project-card')];
     filters.forEach(btn => {
@@ -1503,7 +1512,6 @@
       });
     });
 
-    // Modal
     function openProjectModal(key) {
       const data = projectData[key]; if (!data) return;
       document.getElementById('modalTitle').textContent = data.title;
@@ -1522,7 +1530,6 @@
     [document.getElementById('modalBackdrop'), document.getElementById('modalClose'), document.getElementById('modalDone')].forEach(el => el.addEventListener('click', closeProjectModal));
     document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeProjectModal(); closeMobileMenu(); }});
 
-    // Form
     document.getElementById('contactForm').addEventListener('submit', (e) => {
       e.preventDefault();
       const fields = ['name', 'email', 'subject', 'message'].map(id => e.target[id].value.trim());
@@ -1532,13 +1539,11 @@
       e.target.reset();
     });
 
-    // Copy Email
     document.getElementById('copyEmailBtn').addEventListener('click', async () => {
       try { await navigator.clipboard.writeText(document.getElementById('emailText').textContent.trim()); showToast('Email copied to clipboard.'); } 
       catch { showToast('Copy failed.'); }
     });
 
-    // Custom Cursor
     if (window.matchMedia('(pointer: fine)').matches) {
       document.body.style.cursor = 'none';
       const dot = document.querySelector('.cursor-dot'), ring = document.querySelector('.cursor-ring');
