@@ -147,7 +147,7 @@
 
     .lead { font-size: clamp(1.05rem, 1.4vw, 1.15rem); line-height: 1.8; color: var(--muted); max-width: 68ch; font-weight: 300; }
     .muted { color: var(--muted); }
-    .small { font-size: 0.95rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+    .small { font-size: 0.95rem; line-height: 1.7; color: var(--muted); font-weight: 300; }
 
     /* =========================================
        LAYOUT GRIDS & SURFACES
@@ -425,14 +425,14 @@
       color: var(--primary-2); font-size: 1.4rem;
     }
 
-    .stack-list, .principle-list { display: grid; gap: 16px; }
+    .stack-list, .principle-list { display: grid; gap: 16px; height: 100%;}
     
     .stack-item {
       padding: 24px; border-radius: var(--radius-md);
       border: 1px solid var(--line); background: var(--surface);
       display: flex; align-items: flex-start; gap: 20px;
       transition: var(--transition);
-      height: 100%;
+      flex: 1; /* Aligns content cleanly */
     }
     .stack-item:hover { transform: translateX(6px); border-color: var(--primary); background: var(--surface-2); }
 
@@ -457,10 +457,7 @@
       color: var(--bg); background: var(--primary-2); border-color: var(--primary-2); transform: translateY(-2px);
     }
 
-    /* Scrollable Sticky Wrapper for smaller laptops */
-    .skill-spotlight-wrapper { 
-      position: sticky; top: 120px; height: max-content; z-index: 10;
-    }
+    .skill-spotlight-wrapper { position: sticky; top: 120px; height: max-content; z-index: 10; }
 
     .skill-spotlight {
       display: flex; flex-direction: column; justify-content: space-between; gap: 24px;
@@ -525,23 +522,22 @@
     
     .timeline-column { 
       display: flex; flex-direction: column; gap: 32px; 
-      position: relative; padding-left: 32px; /* Set exact padding */
+      position: relative; padding-left: 32px; 
     }
 
-    /* The continuous line down the column */
     .timeline-column::before {
-      content: ""; position: absolute; left: 4px; top: 12px; bottom: 0; width: 2px; /* Line width 2px, center at 5px */
+      content: ""; position: absolute; left: 4px; top: 12px; bottom: 0; width: 2px; 
       background: var(--line-strong);
     }
 
     .timeline-card {
       position: relative; padding: 28px;
       border-radius: var(--radius-md); border: 1px solid var(--line); background: var(--surface);
+      display: flex; flex-direction: column; flex: 1; /* Card alignment */
     }
     
-    /* The dot perfectly aligned with the line */
     .timeline-card::before {
-      content: ""; position: absolute; left: -32px; top: 32px; width: 10px; height: 10px; /* Dot width 10px, center at 5px */
+      content: ""; position: absolute; left: -32px; top: 32px; width: 10px; height: 10px; 
       border-radius: 50%; background: var(--primary); border: 2px solid var(--bg);
       z-index: 2;
     }
@@ -662,7 +658,7 @@
       .title-xl { font-size: clamp(2.8rem, 10vw, 4rem); }
       .timeline-column { padding-left: 20px; }
       .timeline-column::before { left: 4px; }
-      .timeline-card::before { left: -21px; } /* Adjust dot for mobile padding */
+      .timeline-card::before { left: -21px; } 
     }
     @media (max-width: 640px) {
       .container { width: calc(100% - 32px); }
@@ -700,7 +696,7 @@
       </nav>
 
       <div class="nav-actions">
-        <a href="NikithaKeshan.pdf" class="btn btn-secondary hide-mobile" download><i class="ph-light ph-download-simple"></i> Resumé</a>
+        <a href="NikithaKeshan.pdf" class="btn btn-secondary hide-mobile" download><i class="ph-light ph-download-simple"></i> Resume</a>
         <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
           <span></span>
         </button>
@@ -714,7 +710,7 @@
       <a href="#projects" class="nav-link" data-route-link="projects">Work</a>
       <a href="#experience" class="nav-link" data-route-link="experience">History</a>
       <a href="#contact" class="nav-link" data-route-link="contact">Contact</a>
-      <a href="assets/Nikitha_Keshan_CV.pdf" class="btn btn-secondary" download style="width:100%; margin-top: 16px; justify-content:center;">Download Resumé</a>
+      <a href="NikithaKeshan.pdf" class="btn btn-secondary" download style="width:100%; margin-top: 16px; justify-content:center;">Download Resume</a>
     </div>
   </header>
 
